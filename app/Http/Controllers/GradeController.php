@@ -17,6 +17,12 @@ class GradeController extends Controller
 
     public function storeGrade(storeGradeRequest $request)
     {
+
+        if (Grade::where('name->ar', $request->name_ar)->orWhere('name->en', $request->name_en)->exists()) {
+            toastr()->error('grade name is exists');
+
+            return redirect()->route('grade.index');
+        }
         try {
 
             Grade::create([
@@ -39,6 +45,7 @@ class GradeController extends Controller
 
     public function updateGrade(updateGradeRequest $request, Grade $grade)
     {
+
         try {
 
             $grade->update([

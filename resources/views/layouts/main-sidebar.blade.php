@@ -6,14 +6,24 @@
                 <ul class="nav navbar-nav side-menu" id="sidebarnav">
                     <!-- menu item Dashboard-->
                     <li>
-                        <a href="{{ route('grade.index') }}" >
+                        <a href="{{ route('grade.index') }}">
                             <div class="pull-left"><i class="ti-home"></i><span
                                     class="right-nav-text">{{ trans('sidebar.Grades') }}</span>
                             </div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
-                     
+
+                    </li>
+                    <li>
+                        <a href="{{ route('level.index') }}">
+                            <div class="pull-left"><i class="ti-home"></i><span
+                                    class="right-nav-text">{{ trans('sidebar.Levels') }}</span>
+                            </div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+
                     </li>
                     <!-- menu title -->
                     <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">Components </li>

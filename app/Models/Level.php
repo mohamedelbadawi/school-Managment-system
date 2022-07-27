@@ -6,15 +6,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 
-class Grade extends Model
+class Level extends Model
 {
     use HasFactory, HasTranslations;
-    protected $fillable = ['name', 'note'];
+    protected $fillable = ['name', 'grade_id'];
     public $translatable = ['name'];
 
 
-    public function levels()
+    public function grade()
     {
-        return $this->hasMany(Level::class);
+        return $this->belongsTo(Grade::class);
     }
 }

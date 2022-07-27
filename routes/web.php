@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LevelController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,10 +25,16 @@ Route::group(
     function () {
         Route::middleware(['auth'])->group(function () {
             Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+            // grades
             Route::get('/grades', [GradeController::class, 'index'])->name('grade.index');
             Route::post('/grades/store', [GradeController::class, 'storeGrade'])->name('grade.store');
             Route::Patch('/grades/update/{grade}', [GradeController::class, 'updateGrade'])->name('grade.update');
             Route::delete('/grades/delete/{grade}', [GradeController::class, 'deleteGrade'])->name('grade.delete');
+            // Levels
+            Route::get('/levels', [LevelController::class, 'index'])->name('level.index');
+            Route::post('/levels/store', [LevelController::class, 'storeLevel'])->name('level.store');
+            Route::PATCH('/levels/update/{level}', [LevelController::class, 'updateLevel'])->name('level.update');
+            Route::DELETE('/levels/delete/{level}', [LevelController::class, 'deleteLevel'])->name('level.delete');
         });
         Auth::routes();
     }
