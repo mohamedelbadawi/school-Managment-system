@@ -22,14 +22,18 @@ class LevelController extends Controller
     {
 
 
+
         try {
-            Level::create([
-                'name' => [
-                    'ar' => $request->name_ar,
-                    'en' => $request->name_en
-                ],
-                'grade_id' => $request->grade_id
-            ]);
+            foreach ($request->levels as $level) {
+
+                Level::create([
+                    'name' => [
+                        'ar' => $level['name_ar'],
+                        'en' => $level['name_en']
+                    ],
+                    'grade_id' => $level['grade_id']
+                ]);
+            }
             toastr()->success('level created successfully!');
             return redirect()->route('level.index');
         } catch (\Throwable $th) {
