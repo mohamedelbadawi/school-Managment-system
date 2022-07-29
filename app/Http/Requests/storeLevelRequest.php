@@ -24,7 +24,7 @@ class storeLevelRequest extends FormRequest
     public function rules()
     {
         return [
-            'levels' => 'required'
+            // 'levels' => 'required'
         ];
     }
 }

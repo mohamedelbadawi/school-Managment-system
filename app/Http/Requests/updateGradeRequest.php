@@ -23,9 +23,10 @@ class updateGradeRequest extends FormRequest
      */
     public function rules()
     {
+
         return [
-            'name_ar' => 'required',
-            'name_en' => 'required',
+            'name_ar' => 'required|unique:grades,name->ar' . $this->grade->id,
+            'name_en' => 'required|unique:grades,name->en' . $this->grade->id,
             'notes' => 'nullable',
         ];
     }

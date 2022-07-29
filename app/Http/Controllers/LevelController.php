@@ -68,4 +68,18 @@ class LevelController extends Controller
             return redirect()->route('level.index');
         }
     }
+
+
+    public function deleteAll(Request $request)
+    {
+        // dd($request);
+        $ids = explode(',', $request->ids);
+
+        foreach ($ids as $id) {
+            $level = Level::findOrFail($id);
+            $level->delete();
+        }
+        toastr()->success('level deleted successfully!');
+        return redirect()->route('level.index');
+    }
 }

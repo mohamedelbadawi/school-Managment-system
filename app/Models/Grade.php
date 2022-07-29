@@ -17,4 +17,9 @@ class Grade extends Model
     {
         return $this->hasMany(Level::class);
     }
+
+    public function classrooms()
+    {
+        return $this->hasMany(ClassRoom::class);
+    }
 }

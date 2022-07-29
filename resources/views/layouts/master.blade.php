@@ -9,6 +9,7 @@
     <meta name="author" content="potenzaglobalsolutions.com" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     @include('layouts.head')
+    @livewireStyles
 </head>
 
 <body>
@@ -35,7 +36,16 @@
         <div class="content-wrapper">
 
             @yield('page-header')
-
+            @if ($errors->any())
+                <div class="alert alert-danger mt-5">
+                    <p><strong>Opps Something went wrong</strong></p>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             @yield('content')
 
             <!--=================================

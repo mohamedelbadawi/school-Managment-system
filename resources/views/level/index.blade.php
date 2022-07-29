@@ -10,12 +10,24 @@
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                         Add Level
                     </button>
+                    <button type="button" class="btn btn-danger" disabled id="deletebtn" data-toggle="modal"
+                        data-target="#deleteAllModal">
+                        delete All this Levels
+                    </button>
+
+
+
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table id="datatable" class="table table-striped table-bordered p-0">
                             <thead>
                                 <tr>
+                                    <td>
+                                        <input type="checkbox" id="select-all">
+
+                                    </td>
+
                                     <th>level name</th>
                                     <th>grade name</th>
                                     <th>Actions</th>
@@ -23,8 +35,13 @@
                                 </tr>
                             </thead>
                             <tbody>
+
                                 @foreach ($levels as $level)
                                     <tr>
+                                        <td>
+                                            <input type="checkbox" value="{{ $level->id }}" class="check"
+                                                name="levels">
+                                        </td>
                                         <td>{{ $level->name }}</td>
                                         <td>{{ $level->grade->name }}</td>
                                         <td>
@@ -41,9 +58,11 @@
                                     </tr>
                                 @endforeach
 
+
                             </tbody>
                             <tfoot>
                                 <tr>
+                                    <th>check</th>
                                     <th>level Name</th>
                                     <th>grade name</th>
                                     <th>Actions</th>
@@ -57,93 +76,6 @@
             </div>
         </div>
     </div>
-
-
-
-    {{-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add level</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="card">
-
-                        <div class="card-body">
-
-                            <form action="{{ route('level.store') }}" class="form" method="post">
-                                @csrf
-                                <div class="repeater">
-                                    <div data-repeater-list="List_Classes">
-                                        <div data-repeater-item>
-                                            <div class="d-flex ">
-                                                <div class="form-group mr-1 col-4">
-                                                    <label for="name_ar">
-                                                        Arabic name
-                                                    </label>
-                                                    <input type="text" class="form-control border" name="name_ar">
-                                                    @error('name_ar')
-                                                        <div class="text-danger">{{ $message }}</div>
-                                                    @enderror
-                                                </div>
-                                                <div class="form-group col-4">
-                                                    <label for="name_en">
-                                                        English name
-                                                    </label>
-                                                    <input type="text" class="form-control border" name="name_en">
-                                                    @error('name_en')
-                                                        <div class="text-danger">{{ $message }}</div>
-                                                    @enderror
-                                                </div>
-
-
-                                                <div class="form-group col-4">
-                                                    <label for="grade">
-                                                        levels
-                                                    </label>
-                                                    <select class="form-control" name="grade_id">
-                                                        @foreach ($grades as $grade)
-                                                            <option value="{{ $grade->id }}">{{ $grade->name }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="row mt-20">
-                                    <div class="col-12">
-                                        <input class="button" data-repeater-create type="button"
-                                            value="Add" />
-                                    </div>
-
-                                </div>
-                                <div class="modal-footer">
-                                    <button class="btn btn-success" type="submit">Add level</button>
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                </form>
-
-            </div>
-        </div>
-    </div> --}}
-
-
-
 
 
 
@@ -161,7 +93,7 @@
                 </div>
                 <div class="modal-body">
 
-                    <form class=" row mb-30" action="{{route('level.store')}}" method="POST">
+                    <form class=" row mb-30" action="{{ route('level.store') }}" method="POST">
                         @csrf
                         <div class="card-body">
                             <div class="repeater ">
@@ -208,7 +140,9 @@
                                 </div>
                                 <div class="row mt-20 mb-2">
                                     <div class="col-12">
-                                        <input class="btn btn-sm btn-success" data-repeater-create type="button" value="Add" />
+
+                                        <button class="btn btn-sm btn-success" data-repeater-create type="button"><i
+                                                class="ti-plus"></i> Add</button>
                                     </div>
 
                                 </div>
@@ -331,6 +265,33 @@
         </div>
     @endforeach
 
+
+    <div class="modal fade" id="deleteAllModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Delete this IDS</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{ route('level.deleteAll') }}" method="post">
+                    @csrf
+                    <div class="modal-body">
+                        Are you sure you want to delete ?
+                        <input type="text" name="ids">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
     @foreach ($levels as $level)
         <div class="modal fade" id="deleteModal-{{ $level->id }}" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -358,4 +319,39 @@
             </div>
         </div>
     @endforeach
+@endsection
+@section('js')
+    <script>
+        document.getElementById('select-all').onclick = function() {
+            var checkboxes = document.getElementsByName('levels');
+            for (var checkbox of checkboxes) {
+                checkbox.checked = this.checked;
+            }
+
+        }
+    </script>
+    <script>
+        $(".check").on("click", function() {
+            if ($(".check:checked").length > 0) {
+                $('#deletebtn').prop('disabled', false);
+            } else {
+                $('#deletebtn').prop('disabled', true);
+            }
+        });
+
+
+        $(function() {
+            $('#deletebtn').click(function() {
+                var selected = new Array();
+                $(".check:checked").each(function() {
+                    selected.push(this.value);
+                })
+
+                if (selected.length > 0) {
+                    $('#deletebtn').prop('disabled', false);
+                    $('input[name="ids"]').val(selected);
+                }
+            });
+        });
+    </script>
 @endsection

@@ -18,11 +18,6 @@ class GradeController extends Controller
     public function storeGrade(storeGradeRequest $request)
     {
 
-        if (Grade::where('name->ar', $request->name_ar)->orWhere('name->en', $request->name_en)->exists()) {
-            toastr()->error('grade name is exists');
-
-            return redirect()->route('grade.index');
-        }
         try {
 
             Grade::create([
@@ -65,8 +60,15 @@ class GradeController extends Controller
     public function deleteGrade(Grade $grade)
     {
         try {
-            $grade->delete();
-            toastr()->success('grade deleted successfully');
+            if ($grade->levels->count() > 0) {
+
+                toastr()->error('Can\'t delete grade because it have levels');
+                return redirect()->route('grade.index');
+            } else {
+
+                $grade->delete();
+                toastr()->success('grade deleted successfully');
+            }
             return redirect()->route('grade.index');
         } catch (\Throwable $th) {
             toastr()->error('Can\'t delete grade right now');

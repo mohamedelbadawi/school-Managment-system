@@ -1,6 +1,7 @@
 
 <?php
 
+use App\Http\Controllers\ClassRoomController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LevelController;
@@ -35,6 +36,12 @@ Route::group(
             Route::post('/levels/store', [LevelController::class, 'storeLevel'])->name('level.store');
             Route::PATCH('/levels/update/{level}', [LevelController::class, 'updateLevel'])->name('level.update');
             Route::DELETE('/levels/delete/{level}', [LevelController::class, 'deleteLevel'])->name('level.delete');
+            Route::post('/levels/deleteLevels/', [LevelController::class, 'deleteAll'])->name('level.deleteAll');
+            // classrooms
+            Route::get('/classrooms', [ClassRoomController::class, 'index'])->name('classroom.index');
+            Route::post('/classrooms/store', [ClassRoomController::class, 'storeClassroom'])->name('classroom.store');
+            Route::PATCH('/classrooms/update/{classRoom}', [ClassRoomController::class, 'updateClassroom'])->name('classroom.update');
+            Route::delete('/classrooms/delete/{classRoom}', [ClassRoomController::class, 'deleteClassroom'])->name('classroom.delete');
         });
         Auth::routes();
     }
@@ -45,4 +52,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
