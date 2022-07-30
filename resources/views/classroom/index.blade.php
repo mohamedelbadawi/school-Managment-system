@@ -36,7 +36,13 @@
                                                     <tr>
                                                         <td>{{ $classroom->name }}</td>
                                                         <td>{{ $classroom->level->name }}</td>
-                                                        <td>{{ $classroom->status ? 'Active' : 'Inactive' }}</td>
+                                                        <td>
+                                                            <label
+                                                                class=" badge {{ $classroom->status ? 'badge-success' : 'badge-danger' }}">
+
+                                                                {{ $classroom->status ? 'Active' : 'Inactive' }}
+                                                        </td>
+                                                        </label>
                                                         <td>
                                                             <button class="btn btn-primary" data-toggle="modal"
                                                                 data-target="#editModal-{{ $classroom->id }}">
@@ -98,9 +104,11 @@
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    Are you sure you want to delete {{ $classroom->name }} ?
+                                                                    Are you sure you want to delete {{ $classroom->name }}
+                                                                    ?
                                                                 </div>
-                                                                <form action="{{ route('classroom.delete', $classroom->id) }}"
+                                                                <form
+                                                                    action="{{ route('classroom.delete', $classroom->id) }}"
                                                                     method="post">
                                                                     @csrf
                                                                     @method('DELETE')
