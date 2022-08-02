@@ -11,4 +11,10 @@ class StudentParent extends Model
     use HasFactory, HasTranslations;
     protected $guarded = [];
     public $translatable = ['father_name', 'mom_name', 'father_job', 'mom_job'];
+
+    public function attachments()
+    {
+
+        return $this->hasMany(ParentAttachment::class);
+    }
 }

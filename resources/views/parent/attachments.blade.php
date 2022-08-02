@@ -12,10 +12,13 @@
         <button class="btn btn-danger btn-sm nextBtn btn-lg pull-right mr-2" type="button" wire:click="back(2)">
             Back
         </button>
-
-        <button class="btn btn-success btn-sm nextBtn btn-lg pull-right mr-2" type="button"
-            wire:click="submit">submit</button>
-
+        @if ($updateMode)
+            <button class="btn btn-success btn-sm nextBtn btn-lg pull-right mr-2" type="button"
+                wire:click="update">update</button>
+        @else
+                <button class="btn btn-success btn-sm nextBtn btn-lg pull-right mr-2" type="button"
+                    wire:click="submit">submit</button>
+        @endif
 
     </div>
 </div>

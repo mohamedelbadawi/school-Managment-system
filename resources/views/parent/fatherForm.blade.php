@@ -110,10 +110,14 @@
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
-
-        <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" wire:click="firstStep" type="button">Next
-        </button>
-
+        @if ($updateMode)
+            <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" wire:click="editFirstStep"
+                type="button">Next
+            </button>
+        @else
+            <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" wire:click="firstStep" type="button">Next
+            </button>
+        @endif
     </div>
 </div>
 </div>

@@ -99,8 +99,14 @@
             Back
         </button>
 
-        <button class="btn btn-success btn-sm nextBtn btn-lg pull-right mr-2" type="button"
-            wire:click="secondStep">Next</button>
+        @if ($updateMode)
+            <button class="btn btn-success btn-sm nextBtn btn-lg pull-right mr-1" wire:click="editSecondStep"
+                type="button">Next
+            </button>
+        @else
+            <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" wire:click="secondStep" type="button">Next
+            </button>
+        @endif
 
 
     </div>
