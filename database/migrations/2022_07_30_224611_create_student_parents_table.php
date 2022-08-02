@@ -38,6 +38,11 @@ class CreateStudentParentsTable extends Migration
             $table->string('mom_phone');
             $table->string('mom_address');
 
+            $table->foreign('father_nationality_id')->references('id')->on('nationalities')->onDelete('cascade');
+            $table->foreign('mom_nationality_id')->references('id')->on('nationalities')->onDelete('cascade');
+            $table->foreign('mom_religion_id')->references('id')->on('religions')->onDelete('cascade');
+            $table->foreign('father_religion_id')->references('id')->on('religions')->onDelete('cascade');
+
 
 
 

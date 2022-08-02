@@ -7,9 +7,12 @@ use App\Models\Nationalitie;
 use App\Models\Religion;
 use Livewire\Component;
 use App\Models\StudentParent;
+use Livewire\WithFileUploads;
+use App\Models\ParentAttachment;
 
 class AddParentData extends Component
 {
+    use WithFileUploads;
     public $currentStep = 1;
     public $father_name_ar,
         $father_name_en, $father_phone,
@@ -22,6 +25,7 @@ class AddParentData extends Component
         $mom_job_en, $mom_national_id,
         $mom_nationality_id, $mom_address,
         $mom_phone, $mom_religion_id;
+    public $attachments = [];
 
     public function firstStep()
     {
@@ -60,11 +64,13 @@ class AddParentData extends Component
 
         ]);
 
+        $this->currentStep = 3;
+    }
+
+    public function submit()
+    {
         try {
-
-
-
-            StudentParent::create(
+            $parent = StudentParent::create(
                 [
                     'email' => $this->email,
                     'password' => $this->password,
@@ -98,6 +104,15 @@ class AddParentData extends Component
                 ]
 
             );
+
+            if (!empty($this->attachments)) {
+                foreach ($this->attachments as $attachment) {
+                    $attachment->storeAs($this->father_national_id, $attachment->getClientOriginalName(), $disk = 'parent_attachments');
+                    ParentAttachment::create(['name' => $attachment->getClientOriginalName(), 'student_parent_id' => $parent->id]);
+                }
+            }
+            $this->clearForm();
+            $this->currentStep = 1;
             $this->dispatchBrowserEvent(
                 'alert',
 
@@ -110,7 +125,6 @@ class AddParentData extends Component
                 ['type' => 'error',  'message' => 'Parent can\'t created now']
             );
         }
-        $this->clearForm();
     }
 
     public function clearForm()
@@ -135,6 +149,7 @@ class AddParentData extends Component
         $this->mom_address = '';
         $this->mom_phone = '';
         $this->mom_religion_id = '';
+        $this->attachments = '';
     }
 
     public function render()

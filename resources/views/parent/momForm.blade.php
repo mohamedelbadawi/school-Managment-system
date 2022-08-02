@@ -99,8 +99,8 @@
             Back
         </button>
 
-        <button class="btn btn-success btn-sm nextBtn btn-lg pull-right mr-2" type="button" wire:click="secondStep"
-            >Submit</button>
+        <button class="btn btn-success btn-sm nextBtn btn-lg pull-right mr-2" type="button"
+            wire:click="secondStep">Next</button>
 
 
     </div>
