@@ -20,7 +20,7 @@ class ClassRoomController extends Controller
     public function storeClassroom(storeClassroomRequest $request)
     {
         try {
-            ClassRoom::create([
+            $classroom = ClassRoom::create([
                 'name' => [
                     'en' => $request->name_en,
                     'ar' => $request->name_ar
@@ -28,6 +28,7 @@ class ClassRoomController extends Controller
                 'level_id' => $request->level_id,
                 'grade_id' => $request->grade_id
             ]);
+            $classroom->teachers()->attach($request->teachers);
             toastr()->success('Classroom created successfullly');
             return redirect()->route('classroom.index');
         } catch (\Throwable $th) {
@@ -52,6 +53,7 @@ class ClassRoomController extends Controller
                 'level_id' => $request->level_id,
                 'status' => $request->status
             ]);
+            $classRoom->teachers()->attach($request->teachers);
             toastr()->success('Classroom updated successfullly');
             return redirect()->route('classroom.index');
         } catch (\Throwable $th) {

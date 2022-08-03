@@ -13,7 +13,7 @@ class CreateTeacherClassRoomTable extends Migration
      */
     public function up()
     {
-        Schema::create('teacher_classRoom', function (Blueprint $table) {
+        Schema::create('class_room_teacher', function (Blueprint $table) {
             $table->id();
             $table->foreignId('teacher_id')->constrained()->cascadeOnDelete();
             $table->foreignId('class_room_id')->constrained()->cascadeOnDelete();

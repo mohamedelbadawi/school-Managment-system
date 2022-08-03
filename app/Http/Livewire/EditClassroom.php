@@ -10,8 +10,9 @@ class EditClassroom extends Component
     public $grade_id;
     public $grades;
     public $level_id;
-    public $levels = [];
+    public $levels = [], $selectedTeachers = [];
     public $classroom;
+
 
     public function mount($classroom, $grades)
     {

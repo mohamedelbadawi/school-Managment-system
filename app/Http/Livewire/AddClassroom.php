@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Grade;
 use App\Models\Level;
+use App\Models\Teacher;
 use Livewire\Component;
 
 class AddClassroom extends Component
@@ -12,6 +13,7 @@ class AddClassroom extends Component
     public $grades;
     public $level_id;
     public $levels = [];
+    public $selectedTeachers = [];
 
     public function mount($grades)
     {
@@ -24,6 +26,8 @@ class AddClassroom extends Component
         if (!empty($this->grade_id)) {
             $this->levels = Level::where('grade_id', $this->grade_id)->get();
         }
-        return view('livewire.add-classroom', compact('grades'));
+        $teachers = Teacher::all();
+        // dd($teachers);
+        return view('livewire.add-classroom', compact('grades', 'teachers'));
     }
 }

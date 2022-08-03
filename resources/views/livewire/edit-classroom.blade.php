@@ -54,6 +54,17 @@
             </select>
         </div>
         <div class="form-group">
+            <label for="teachers">
+                teachers
+            </label>
+            <select wire:model="selectedTeachers" name="teachers[]" class="form-control" multiple>
+                <option>Choose the grade</option>
+                @foreach ($teachers as $teacher)
+                    <option value="{{ $teacher->id }}">{{ $teacher->name }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="form-group">
             <label for="status">
                 Status
             </label>
