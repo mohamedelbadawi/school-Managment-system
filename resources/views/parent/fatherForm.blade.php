@@ -111,8 +111,7 @@
             @enderror
         </div>
         @if ($updateMode)
-            <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" wire:click="editFirstStep"
-                type="button">Next
+            <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" wire:click="editFirstStep" type="button">Next
             </button>
         @else
             <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" wire:click="firstStep" type="button">Next

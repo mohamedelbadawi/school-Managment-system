@@ -6,6 +6,7 @@ use App\Http\Controllers\GradeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\StudentParentController;
+use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,6 +46,11 @@ Route::group(
             Route::delete('/classrooms/delete/{classRoom}', [ClassRoomController::class, 'deleteClassroom'])->name('classroom.delete');
             // Parent
             Route::get('/parent/create', [StudentParentController::class, 'addParent'])->name('parent.create');
+            //  teachers
+            Route::get('/teachers', [TeacherController::class, 'index'])->name('teacher.index');
+            Route::post('/teachers/store', [TeacherController::class, 'storeTeacher'])->name('teacher.store');
+            Route::PATCH('/teachers/update/{teacher}', [TeacherController::class, 'updateTeacher'])->name('teacher.update');
+            Route::DELETE('/teachers/delete/{teacher}', [TeacherController::class, 'deleteTeacher'])->name('teacher.delete');
         });
         Auth::routes();
     }

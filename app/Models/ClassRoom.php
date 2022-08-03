@@ -9,7 +9,7 @@ use Spatie\Translatable\HasTranslations;
 class ClassRoom extends Model
 {
     use HasFactory, HasTranslations;
-    protected $fillable = ['name', 'level_id', 'grade_id','status'];
+    protected $fillable = ['name', 'level_id', 'grade_id', 'status'];
     public $translatable = ['name'];
 
     public function grade()
@@ -20,5 +20,9 @@ class ClassRoom extends Model
     public function level()
     {
         return $this->belongsTo(Level::class);
+    }
+    public function teachers()
+    {
+        return $this->belongsToMany(Teacher::class);
     }
 }

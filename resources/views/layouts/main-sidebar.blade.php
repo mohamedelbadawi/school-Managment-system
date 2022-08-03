@@ -35,6 +35,15 @@
 
                     </li>
                     <li>
+                        <a href="{{ route('teacher.index') }}">
+                            <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">Teachers</span>
+                            </div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+
+                    </li>
+                    <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#parent-menu">
                             <div class="pull-left"><i class="ti-person"></i><span class="right-nav-text">Parents</span>
                             </div>
@@ -104,7 +113,8 @@
                     <!-- menu item mailbox-->
                     <li>
                         <a href="mail-box.html"><i class="ti-email"></i><span class="right-nav-text">Mail
-                                box</span> <span class="badge badge-pill badge-warning float-right mt-1">HOT</span> </a>
+                                box</span> <span class="badge badge-pill badge-warning float-right mt-1">HOT</span>
+                        </a>
                     </li>
                     <!-- menu item Charts-->
                     <li>

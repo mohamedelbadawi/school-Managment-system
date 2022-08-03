@@ -48,7 +48,7 @@
         @endif
 
         <div class="modal-footer">
-            <button class="btn btn-success" type="submit">Add level</button>
+            <button class="btn btn-success" type="submit">Add classroom</button>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
 </div>
