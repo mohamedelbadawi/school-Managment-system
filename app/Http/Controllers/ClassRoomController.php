@@ -53,7 +53,7 @@ class ClassRoomController extends Controller
                 'level_id' => $request->level_id,
                 'status' => $request->status
             ]);
-            $classRoom->teachers()->attach($request->teachers);
+            $classRoom->teachers()->sync($request->teachers);
             toastr()->success('Classroom updated successfullly');
             return redirect()->route('classroom.index');
         } catch (\Throwable $th) {

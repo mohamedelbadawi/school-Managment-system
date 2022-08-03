@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Level;
+use App\Models\Teacher;
 use Livewire\Component;
 
 class EditClassroom extends Component
@@ -20,6 +21,7 @@ class EditClassroom extends Component
         $this->grades = $grades;
         $this->grade_id = $this->classroom->grade_id;
         $this->level_id = $this->classroom->level_id;
+        $this->selectedTeachers = $this->classroom->teachers->pluck('id');
     }
     public function render()
     {
@@ -28,6 +30,7 @@ class EditClassroom extends Component
             $this->levels = Level::where('grade_id', $this->grade_id)->get();
         }
         $classroom = $this->classroom;
-        return view('livewire.edit-classroom', compact('classroom', 'grades'));
+        $teachers = Teacher::all();
+        return view('livewire.edit-classroom', compact('classroom', 'grades', 'teachers'));
     }
 }
