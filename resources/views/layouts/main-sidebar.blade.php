@@ -44,6 +44,15 @@
 
                     </li>
                     <li>
+                        <a href="{{ route('student.index') }}">
+                            <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">Students</span>
+                            </div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+
+                    </li>
+                    <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#parent-menu">
                             <div class="pull-left"><i class="ti-person"></i><span class="right-nav-text">Parents</span>
                             </div>

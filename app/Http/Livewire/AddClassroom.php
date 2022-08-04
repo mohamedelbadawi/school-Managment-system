@@ -27,7 +27,6 @@ class AddClassroom extends Component
             $this->levels = Level::where('grade_id', $this->grade_id)->get();
         }
         $teachers = Teacher::all();
-        // dd($teachers);
         return view('livewire.add-classroom', compact('grades', 'teachers'));
     }
 }
