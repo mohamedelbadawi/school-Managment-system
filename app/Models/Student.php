@@ -18,7 +18,7 @@ class Student extends Model
 
     public function parent()
     {
-        return $this->belongsTo(StudentParent::class,'student_parent_id');
+        return $this->belongsTo(StudentParent::class, 'student_parent_id');
     }
     public function nationality()
     {
@@ -43,5 +43,12 @@ class Student extends Model
     public function classroom()
     {
         return $this->belongsTo(ClassRoom::class, 'class_room_id');
+    }
+
+
+
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
     }
 }

@@ -48,9 +48,10 @@
                                         <td>
                                             <button class="btn btn-primary btn-sm m-1" data-toggle="modal"
                                                 data-target="#editModal-{{ $student->id }}">Edit</button>
-                                            <button class="btn btn-danger btn-sm"
-                                            data-toggle="modal"
-                                            data-target="#deleteModal-{{ $student->id }}">Delete</button>
+                                            <button class="btn btn-danger btn-sm" data-toggle="modal"
+                                                data-target="#deleteModal-{{ $student->id }}">Delete</button>
+                                            <a class="btn btn-success btn-sm"
+                                                href="{{ route('student.show', $student->id) }}">view</a>
 
                                         </td>
                                     </tr>
@@ -94,19 +95,142 @@
                 <div class="modal-body">
                     <div class="card">
 
+                        <div class="card-body">
 
-                        @livewire('add-student', ['parents' => $parents, 'genders' => $genders, 'nationalities' => $nationalities, 'bloodTypes' => $bloodTypes, 'grades' => $grades])
+                            <form action="{{ route('student.store') }}" class="form" method="post"
+                                enctype="multipart/form-data">
+                                @csrf
+                                <div class="d-flex">
+                                    <div class="form-group mr-1">
+                                        <label for="name_ar">
+                                            student name (ar)
+                                        </label>
+                                        <input type="text" class="form-control border" name="name_ar">
+                                        @error('name_ar')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name_en">
+                                            student name (en)
+                                        </label>
+                                        <input type="text" class="form-control border" name="name_en">
+                                        @error('name_en')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">
+                                        Email
+                                    </label>
+                                    <input type="email" class="form-control border" name="email">
+                                    @error('email')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">
+                                        password
+                                    </label>
+                                    <input type="password" class="form-control border" name="password">
+                                    @error('password')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
 
+                                <div class="d-flex ">
+
+                                    <div class="form-group col-6">
+                                        <label for="gender_id">Gender</label>
+                                        <select name="gender_id" class="form-control" id="">
+                                            <option value="">Choose gender</option>
+                                            @foreach ($genders as $gender)
+                                                <option value="{{ $gender->id }}">{{ $gender->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('gender_id')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group col-6">
+                                        <label for="nationlitie_id">Nationality</label>
+                                        <select name="nationlitie_id" class="form-control" id="">
+                                            <option value="">Choose nationality</option>
+                                            @foreach ($nationalities as $nationlitie)
+                                                <option value="{{ $nationlitie->id }}">{{ $nationlitie->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('nationlitie_id')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                </div>
+                                <hr class="m-2">
+                                <div class="d-flex">
+
+                                    <div class="form-group col-6">
+                                        <label for="blood_id">Blood</label>
+                                        <select name="blood_id" class="form-control" id="">
+                                            <option value="">Choose blood</option>
+                                            @foreach ($bloodTypes as $blood)
+                                                <option value="{{ $blood->id }}">{{ $blood->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('blood_id')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group col-6">
+                                        <label for="parent_id">parents</label>
+                                        <select name="parent_id" class="form-control" id="">
+                                            <option value="">Choose parent</option>
+                                            @foreach ($parents as $parent)
+                                                <option value="{{ $parent->id }}">{{ $parent->father_name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('parent_id')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <hr class="m-2">
+
+                                @livewire('student-dropdown', ['grades' => $grades])
+
+                                <hr class="m-2">
+
+
+
+                                <div class="form-group">
+                                    <label for="">birth date</label>
+                                    <input type="date" class="form-control" name="date_birth">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="attachments">Attachments</label>
+                                    <input type="file" class="form-control" accept="image/*" name="attachments[]"
+                                        multiple>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button class="btn btn-success" type="submit">Add Student</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                        </div>
 
                     </div>
-
                 </div>
 
-
-                </form>
-
             </div>
+
+
+            </form>
+
         </div>
+    </div>
     </div>
 
 
@@ -128,7 +252,8 @@
 
                             <div class="card-body">
 
-                                <form action="{{ route('student.update', $student->id) }}" class="form" method="post">
+                                <form action="{{ route('student.update', $student->id) }}" class="form"
+                                    method="post">
                                     @csrf
                                     @method('PATCH')
                                     <div class="d-flex">
@@ -167,8 +292,8 @@
                                         <label for="password">
                                             password
                                         </label>
-                                        <input type="password" class="form-control border" value="{{ $student->password }}"
-                                            name="password">
+                                        <input type="password" class="form-control border"
+                                            value="{{ $student->password }}" name="password">
                                         @error('password')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
@@ -241,7 +366,7 @@
                                         </div>
                                     </div>
                                     <hr class="m-2">
-                                    @livewire('edit-student', ['grades' => $grades, 'student' => $student], key($student->id))
+                                    @livewire('student-dropdown', ['grades' => $grades, 'student' => $student], key($student->id))
 
                                     <hr class="m-2">
 

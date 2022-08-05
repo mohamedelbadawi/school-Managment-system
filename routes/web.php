@@ -57,6 +57,7 @@ Route::group(
             Route::post('students/store', [StudentController::class, 'store'])->name('student.store');
             Route::PATCH('students/update/{student}', [StudentController::class, 'update'])->name('student.update');
             Route::DELETE('students/delete/{student}', [StudentController::class, 'destroy'])->name('student.delete');
+            Route::get('students/{student}', [StudentController::class, 'show'])->name('student.show');
         });
         Auth::routes();
     }

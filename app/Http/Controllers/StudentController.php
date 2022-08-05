@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateStudentRequest;
 use App\Models\BloodType;
 use App\Models\Gender;
 use App\Models\Grade;
+use App\Models\Image;
 use App\Models\Nationalitie;
 use App\Models\StudentParent;
 use Illuminate\Support\Facades\Redirect;
@@ -51,7 +52,7 @@ class StudentController extends Controller
     {
         try {
 
-            Student::create([
+            $student = Student::create([
                 'name' => [
                     'en' => $request->name_en,
                     'ar' => $request->name_ar,
@@ -67,6 +68,13 @@ class StudentController extends Controller
                 'date_birth' => $request->date_birth,
                 'gender_id' => $request->gender_id,
             ]);
+
+            if (!empty($request->attachments)) {
+                foreach ($request->attachments as $attachment) {
+                    $attachment->storeAs($student->id, $attachment->getClientOriginalName(), $disk = 'student_attachments');
+                    Image::create(['name' => $attachment->getClientOriginalName(), 'imageable_id' => $student->id, 'imageable_type' => Student::class]);
+                }
+            }
             toastr()->success('Student created successfully');
             return redirect()->route('student.index');
         } catch (\Throwable $th) {
@@ -83,7 +91,7 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        //
+        return view('student.show', compact('student'));
     }
 
     /**
