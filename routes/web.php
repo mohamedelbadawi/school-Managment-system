@@ -56,6 +56,7 @@ Route::group(
             Route::get('students', [StudentController::class, 'index'])->name('student.index');
             Route::post('students/store', [StudentController::class, 'store'])->name('student.store');
             Route::PATCH('students/update/{student}', [StudentController::class, 'update'])->name('student.update');
+            Route::get('/students/upgrade', [StudentController::class, 'upgradeStudents'])->name('student.upgrade_view');
             Route::DELETE('students/delete/{student}', [StudentController::class, 'destroy'])->name('student.delete');
             Route::get('students/{student}', [StudentController::class, 'show'])->name('student.show');
         });
@@ -66,6 +67,5 @@ Route::group(
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

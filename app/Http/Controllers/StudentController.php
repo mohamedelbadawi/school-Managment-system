@@ -157,4 +157,13 @@ class StudentController extends Controller
             return redirect()->route('student.index');
         }
     }
+
+
+    public function upgradeStudents()
+    {
+
+        $grades = Grade::all();
+
+        return view('student.upgrade', compact('grades'));
+    }
 }

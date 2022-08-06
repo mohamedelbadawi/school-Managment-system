@@ -44,12 +44,17 @@
 
                     </li>
                     <li>
-                        <a href="{{ route('student.index') }}">
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#students">
                             <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">Students</span>
                             </div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
+                        <ul id="students" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{ route('student.index') }}">Students</a> </li>
+                            <li> <a href="{{ route('student.upgrade_view') }}">upgrades</a> </li>
+                        </ul>
+
 
                     </li>
                     <li>
