@@ -52,7 +52,10 @@
                         </a>
                         <ul id="students" class="collapse" data-parent="#sidebarnav">
                             <li> <a href="{{ route('student.index') }}">Students</a> </li>
-                            <li> <a href="{{ route('student.upgrade_view') }}">upgrades</a> </li>
+                            <li> <a href="{{ route('upgrade.index') }}">upgrades</a> </li>
+                            <li> <a href="{{ route('upgrade.upgrade_student') }}">upgrade student</a> </li>
+                            <li> <a href="{{ route('upgrade.graduate_view') }}">graduateing classrooms</a> </li>
+                            <li> <a href="{{ route('upgrade.graduated') }}">graduated students</a> </li>
                         </ul>
 
 

@@ -1,9 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Students upgrades
-
-    <!-- breadcrumb -->
+    upgrade students
 @endsection
 @section('content')
     <!-- row -->

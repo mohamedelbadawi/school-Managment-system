@@ -4,13 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use phpDocumentor\Reflection\Types\Parent_;
 use phpDocumentor\Reflection\Types\This;
 use Spatie\Translatable\HasTranslations;
 
 class Student extends Model
 {
-    use HasFactory, HasTranslations;
+    use HasFactory, HasTranslations, SoftDeletes;
     protected $guarded = [];
     public $translatable = ['name'];
     public $timestamps = false;

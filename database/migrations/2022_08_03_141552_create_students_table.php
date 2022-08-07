@@ -26,7 +26,7 @@ class CreateStudentsTable extends Migration
             $table->foreignId('class_room_id')->constrained()->cascadeOnDelete();
             $table->foreignId('level_id')->constrained()->cascadeOnDelete();
             $table->foreignId('student_parent_id')->constrained()->cascadeOnDelete();
-            
+            $table->softDeletes();
         });
     }
 

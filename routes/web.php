@@ -8,6 +8,7 @@ use App\Http\Controllers\LevelController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\StudentParentController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\UpgradeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -56,9 +57,15 @@ Route::group(
             Route::get('students', [StudentController::class, 'index'])->name('student.index');
             Route::post('students/store', [StudentController::class, 'store'])->name('student.store');
             Route::PATCH('students/update/{student}', [StudentController::class, 'update'])->name('student.update');
-            Route::get('/students/upgrade', [StudentController::class, 'upgradeStudents'])->name('student.upgrade_view');
             Route::DELETE('students/delete/{student}', [StudentController::class, 'destroy'])->name('student.delete');
             Route::get('students/{student}', [StudentController::class, 'show'])->name('student.show');
+            //    upgrades
+            Route::get('upgrades/', [UpgradeController::class, 'index'])->name('upgrade.index');
+            Route::get('upgrades/classroom', [UpgradeController::class, 'graduateClassroom'])->name('upgrade.graduate_view');
+            Route::post('upgrades/classroom', [UpgradeController::class, 'storeGraduationClassroom'])->name('upgrade.graduate');
+            Route::DELETE('upgrades/delete/{upgrade}', [UpgradeController::class, 'delete'])->name('upgrade.delete');
+            Route::get('/upgrades/upgradeStudent', [UpgradeController::class, 'upgradeStudent'])->name('upgrade.upgrade_student');
+            Route::get('/upgrades/graduatedStudents', [UpgradeController::class, 'graduatedStudents'])->name('upgrade.graduated');
         });
         Auth::routes();
     }

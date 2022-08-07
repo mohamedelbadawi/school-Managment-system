@@ -159,11 +159,5 @@ class StudentController extends Controller
     }
 
 
-    public function upgradeStudents()
-    {
-
-        $grades = Grade::all();
-
-        return view('student.upgrade', compact('grades'));
-    }
+   
 }
