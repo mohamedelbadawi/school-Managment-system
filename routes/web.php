@@ -5,6 +5,7 @@ use App\Http\Controllers\ClassRoomController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\StudentParentController;
@@ -72,6 +73,10 @@ Route::group(
             Route::post('expenses/store', [ExpenseController::class, 'storeExpense'])->name('expense.store');
             Route::post('expenses/update/{expense}', [ExpenseController::class, 'updateExpense'])->name('expense.update');
             Route::DELETE('expenses/delete/{expense}', [ExpenseController::class, 'deleteExpense'])->name('expense.delete');
+            // invoices
+            Route::get('/invoices', [InvoiceController::class, 'index'])->name('invoice.index');
+            Route::get('/invoices/addInvoice/{student}', [InvoiceController::class, 'createInvoice'])->name('invoice.create');
+            Route::post('/invoices/storeInvoice/{student}', [InvoiceController::class, 'storeInvoice'])->name('invoice.store');
         });
         Auth::routes();
     }

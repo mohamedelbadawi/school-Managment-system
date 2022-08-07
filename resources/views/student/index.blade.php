@@ -46,12 +46,32 @@
                                         <td>{{ $student->level->name }}</td>
                                         <td>{{ $student->classroom->name }}</td>
                                         <td>
-                                            <button class="btn btn-primary btn-sm m-1" data-toggle="modal"
-                                                data-target="#editModal-{{ $student->id }}">Edit</button>
-                                            <button class="btn btn-danger btn-sm" data-toggle="modal"
-                                                data-target="#deleteModal-{{ $student->id }}">Delete</button>
-                                            <a class="btn btn-success btn-sm"
-                                                href="{{ route('student.show', $student->id) }}">view</a>
+
+                                            <div class="dropdown show">
+                                                <a class="btn btn-success btn-sm dropdown-toggle" href="#"
+                                                    role="button" id="dropdownMenuLink" data-toggle="dropdown"
+                                                    aria-haspopup="true" aria-expanded="false">
+                                                    actions
+                                                </a>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('student.show', $student->id) }}"><i
+                                                            style="color: #ffc107" class="far fa-eye "></i>&nbsp;show
+                                                        student </a>
+                                                    <a class="dropdown-item" href=""
+                                                        data-target="#editModal-{{ $student->id }}" data-toggle="modal"><i
+                                                            style="color:green" class="fa fa-edit"></i>&nbsp; edit
+                                                        student</a>
+                                                    <a class="dropdown-item" href=""
+                                                        data-target="#deleteModal-{{ $student->id }}"
+                                                        data-toggle="modal"><i style="color: red"
+                                                            class="fa fa-trash"></i>&nbsp;delete student</a>
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('invoice.create', $student->id) }}"><i
+                                                            style="color: #0000cc" class="fa fa-edit"></i>&nbsp;create
+                                                        Invocie&nbsp;</a>
+                                                </div>
+                                            </div>
 
                                         </td>
                                     </tr>
