@@ -43,6 +43,7 @@
                         </a>
 
                     </li>
+
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#students">
                             <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">Students</span>
@@ -58,6 +59,14 @@
                             <li> <a href="{{ route('upgrade.graduated') }}">graduated students</a> </li>
                         </ul>
 
+                    </li>
+                    <li>
+                        <a href="{{ route('expense.index') }}">
+                            <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">Expenses</span>
+                            </div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
 
                     </li>
                     <li>

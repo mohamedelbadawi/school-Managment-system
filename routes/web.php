@@ -2,6 +2,7 @@
 <?php
 
 use App\Http\Controllers\ClassRoomController;
+use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LevelController;
@@ -66,6 +67,11 @@ Route::group(
             Route::DELETE('upgrades/delete/{upgrade}', [UpgradeController::class, 'delete'])->name('upgrade.delete');
             Route::get('/upgrades/upgradeStudent', [UpgradeController::class, 'upgradeStudent'])->name('upgrade.upgrade_student');
             Route::get('/upgrades/graduatedStudents', [UpgradeController::class, 'graduatedStudents'])->name('upgrade.graduated');
+            // expense
+            Route::get('expenses', [ExpenseController::class, 'index'])->name('expense.index');
+            Route::post('expenses/store', [ExpenseController::class, 'storeExpense'])->name('expense.store');
+            Route::post('expenses/update/{expense}', [ExpenseController::class, 'updateExpense'])->name('expense.update');
+            Route::DELETE('expenses/delete/{expense}', [ExpenseController::class, 'deleteExpense'])->name('expense.delete');
         });
         Auth::routes();
     }

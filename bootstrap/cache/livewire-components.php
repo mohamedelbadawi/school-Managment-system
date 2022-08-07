@@ -3,6 +3,7 @@
   'add-classroom' => 'App\\Http\\Livewire\\AddClassroom',
   'add-parent-data' => 'App\\Http\\Livewire\\AddParentData',
   'edit-classroom' => 'App\\Http\\Livewire\\EditClassroom',
+  'expenses-dropdown' => 'App\\Http\\Livewire\\ExpensesDropdown',
   'graduation-table' => 'App\\Http\\Livewire\\GraduationTable',
   'level-grade-filter' => 'App\\Http\\Livewire\\LevelGradeFilter',
   'student-attachments' => 'App\\Http\\Livewire\\StudentAttachments',
