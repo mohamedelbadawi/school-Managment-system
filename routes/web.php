@@ -7,6 +7,7 @@ use App\Http\Controllers\GradeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\LevelController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\StudentParentController;
 use App\Http\Controllers\TeacherController;
@@ -77,6 +78,11 @@ Route::group(
             Route::get('/invoices', [InvoiceController::class, 'index'])->name('invoice.index');
             Route::get('/invoices/addInvoice/{student}', [InvoiceController::class, 'createInvoice'])->name('invoice.create');
             Route::post('/invoices/storeInvoice/{student}', [InvoiceController::class, 'storeInvoice'])->name('invoice.store');
+            //  payments
+            Route::get('/payments', [PaymentController::class, 'index'])->name('payment.index');
+            Route::get('/payments/create/{student}', [PaymentController::class, 'create'])->name('payment.create');
+            Route::post('/payments/store/{student}', [PaymentController::class, 'store'])->name('payment.store');
+            Route::get('/receipt/{payment}', [PaymentController::class, 'getReceipt'])->name('payment.receipt');
         });
         Auth::routes();
     }

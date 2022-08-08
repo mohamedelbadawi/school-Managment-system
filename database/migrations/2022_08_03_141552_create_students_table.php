@@ -22,6 +22,7 @@ class CreateStudentsTable extends Migration
             $table->foreignId('nationalitie_id')->constrained()->cascadeOnDelete();
             $table->foreignId('blood_type_id')->constrained()->cascadeOnDelete();
             $table->date('date_birth');
+            $table->decimal('debit')->nullable();
             $table->foreignId('grade_id')->constrained()->cascadeOnDelete();
             $table->foreignId('class_room_id')->constrained()->cascadeOnDelete();
             $table->foreignId('level_id')->constrained()->cascadeOnDelete();

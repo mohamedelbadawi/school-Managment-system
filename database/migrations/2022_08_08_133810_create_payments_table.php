@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStudentAcountsTable extends Migration
+class CreatePaymentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateStudentAcountsTable extends Migration
      */
     public function up()
     {
-        Schema::create('student_acounts', function (Blueprint $table) {
+        Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('grade_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('level_id')->constrained()->cascadeOnDelete();
+            $table->string('name');
             $table->foreignId('student_id')->constrained()->cascadeOnDelete();
-            $table->decimal('debit')->nullable();
-            $table->decimal('credit')->nullable();
+            $table->decimal('amount');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateStudentAcountsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('student_acounts');
+        Schema::dropIfExists('payments');
     }
 }

@@ -14,15 +14,23 @@ class InvoiceController extends Controller
 {
     public function index()
     {
-        $invoices = Invoice::with(['grade', 'level', 'expense'])->get();
 
-        return view('invoice.index', compact('invoices'));
+
+
+
+        $invoices = Invoice::with(['grade', 'level', 'expense'])->get();
+        $expenses = Expense::all();
+        $types = Invoice::TYPES;
+
+
+        return view('invoice.index', compact('invoices', 'expenses', 'types'));
     }
 
     public function createInvoice(Student $student)
     {
+        $types = Invoice::TYPES;
         $expenses = Expense::where('level_id', $student->level_id)->get();
-        return view('invoice.add', compact('student', 'expenses'));
+        return view('invoice.add', compact('student', 'expenses', 'types'));
     }
 
     public function storeInvoice(storeInvoiceRequest $request, Student $student)
@@ -35,15 +43,23 @@ class InvoiceController extends Controller
                 $expense = Expense::where('id', $invoice['expense_id'])->first();
 
                 Invoice::create([
-                    'invoice_date' => now(), 'student_id' => $student->id, 'grade_id' => $student->grade_id, 'level_id' => $student->level_id,
+                    'student_id' => $student->id,
                     'expense_id' => $invoice['expense_id'], 'amount' => $expense->amount, 'description' => $invoice['description'],
                 ]);
-                StudentAcount::create(['student_id' => $student->id, 'grade_id' => $student->grade_id, 'level_id' => $student->level_id, 'debit' => $expense->amount, 'credit' => 0.0]);
+                $student->update(['debit' => $student->debit + $expense->amount]);
             }
             toastr()->success('invoice created successfully');
         } catch (\Throwable $th) {
             toastr()->success('something error');
         }
         return redirect()->route('invoice.index');
+    }
+
+    public function updateInvoice(Request $request, Invoice $invoice, StudentAcount $studentAcount)
+    {
+        $expense = Expense::where('id', $invoice['expense_id'])->first();
+
+
+        $invoice->update(['description' => $request->description, 'expense_id' => $request->expense_id, 'amount' => $expense->amount]);
     }
 }

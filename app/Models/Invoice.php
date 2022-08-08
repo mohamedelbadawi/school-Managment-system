@@ -9,6 +9,7 @@ class Invoice extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    const TYPES = ['invoice'];
 
     public function grade()
     {
@@ -27,5 +28,9 @@ class Invoice extends Model
     public function student()
     {
         return $this->belongsTo(Student::class);
+    }
+    public function studentAcount()
+    {
+        return $this->hasMany(StudentAcount::class);
     }
 }

@@ -15,10 +15,7 @@ class CreateInvoicesTable extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
-            $table->date('invoice_date');
             $table->foreignId('student_id')->references('id')->on('students')->onDelete('cascade');
-            $table->foreignId('grade_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('level_id')->constrained()->cascadeOnDelete();
             $table->foreignId('expense_id')->constrained()->cascadeOnDelete();
             $table->decimal('amount', 8, 2);
             $table->string('description')->nullable();

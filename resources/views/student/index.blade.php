@@ -28,6 +28,7 @@
                                     <th>grade</th>
                                     <th>level</th>
                                     <th>Classroom</th>
+                                    <th>debit</th>
                                     <th>Actions</th>
 
                                 </tr>
@@ -45,6 +46,7 @@
                                         <td>{{ $student->grade->name }}</td>
                                         <td>{{ $student->level->name }}</td>
                                         <td>{{ $student->classroom->name }}</td>
+                                        <td>{{ $student->debit ? $student->debit : 0 }}</td>
                                         <td>
 
                                             <div class="dropdown show">
@@ -70,6 +72,11 @@
                                                         href="{{ route('invoice.create', $student->id) }}"><i
                                                             style="color: #0000cc" class="fa fa-edit"></i>&nbsp;create
                                                         Invocie&nbsp;</a>
+
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('payment.create', $student->id) }}"><i
+                                                            class="fa fa-money" aria-hidden="true"></i> pay
+                                                        installment</a>
                                                 </div>
                                             </div>
 
