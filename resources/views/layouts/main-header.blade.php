@@ -124,6 +124,8 @@
                                 </div>
                             </div>
                         </div>
+
+                        {{-- @dd(auth()->guard()->getName()); --}}
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#"><i class="text-secondary ti-reload"></i>Activity</a>
                         <a class="dropdown-item" href="#"><i class="text-success ti-email"></i>Messages</a>
@@ -132,12 +134,21 @@
                                 class="badge badge-info">6</span> </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#"><i class="text-info ti-settings"></i>Settings</a>
-                        <form action="{{ route('logout') }}" method="post" id="logout">
-                            @csrf
-                        </form>
+                        @if (auth('student')->check())
+                            <form method="GET" action="{{ route('logout', 'student') }}">
+                            @elseif(auth('teacher')->check())
+                                <form method="GET" action="{{ route('logout', 'teacher') }}">
+                                @elseif(auth('parent')->check())
+                                    <form method="GET" action="{{ route('logout', 'parent') }}">
+                                    @else
+                                        <form method="GET" action="{{ route('logout', 'web') }}">
+                        @endif
+
+                        @csrf
                         <a class="dropdown-item" href="#"
-                            onclick="document.getElementById("logout").submit();"><i
-                                class="text-danger ti-unlock"></i>Logout</a>
+                            onclick="event.preventDefault();this.closest('form').submit();"><i
+                                class="text-danger ti-unlock"></i>Logout </a>
+                        </form>
                     </div>
                 </li>
             </ul>

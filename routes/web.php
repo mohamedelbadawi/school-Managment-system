@@ -1,6 +1,7 @@
 
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ClassRoomController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\GradeController;
@@ -32,7 +33,7 @@ Route::group(
     ],
     function () {
         Route::middleware(['auth'])->group(function () {
-            Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+            Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
             // grades
             Route::get('/grades', [GradeController::class, 'index'])->name('grade.index');
             Route::post('/grades/store', [GradeController::class, 'storeGrade'])->name('grade.store');
@@ -84,12 +85,16 @@ Route::group(
             Route::post('/payments/store/{student}', [PaymentController::class, 'store'])->name('payment.store');
             Route::get('/receipt/{payment}', [PaymentController::class, 'getReceipt'])->name('payment.receipt');
         });
-        Auth::routes();
+        // Auth::routes();
+        // auth
+        Route::get('login/{type}', [LoginController::class, 'loginForm'])->middleware('guest')->name('login.show');
+        Route::post('login/', [LoginController::class, 'login'])->middleware('guest')->name('login');
+        Route::get('logout/{type}/', [LoginController::class, 'logout'])->middleware('auth')->name('logout');
     }
 );
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('selection');
 
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

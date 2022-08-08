@@ -20,6 +20,12 @@ class TeacherController extends Controller
         return view('teacher.index', compact('teachers', 'genders', 'specializations'));
     }
 
+    public function dashboard()
+    {
+
+        return view('teacher.dashboard');
+    }
+
     public function storeTeacher(storeTeacherRequest $request)
     {
         try {
@@ -67,6 +73,7 @@ class TeacherController extends Controller
             return redirect()->route('teacher.index');
         }
     }
+
 
     public function deleteTeacher(Teacher $teacher)
     {

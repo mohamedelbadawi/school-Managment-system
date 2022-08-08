@@ -32,6 +32,13 @@ class StudentController extends Controller
         return view('student.index', compact('students', 'genders', 'grades', 'parents', 'nationalities', 'bloodTypes'));
     }
 
+
+    public function dashboard()
+    {
+
+        return view('student.dashboard');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -157,7 +164,4 @@ class StudentController extends Controller
             return redirect()->route('student.index');
         }
     }
-
-
-   
 }

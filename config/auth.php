@@ -1,5 +1,9 @@
 <?php
 
+use App\Models\Student;
+use App\Models\StudentParent;
+use App\Models\Teacher;
+
 return [
 
     /*
@@ -40,6 +44,18 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'student' => [
+            'driver' => 'session',
+            'provider' => 'students',
+        ],
+        'teacher' => [
+            'driver' => 'session',
+            'provider' => 'teachers',
+        ],
+        'parent' => [
+            'driver' => 'session',
+            'provider' => 'student_parents',
+        ],
     ],
 
     /*
@@ -63,6 +79,18 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+        'students' => [
+            'driver' => 'eloquent',
+            'model' => Student::class,
+        ],
+        'teachers' => [
+            'driver' => 'eloquent',
+            'model' => Teacher::class,
+        ],
+        'student_parents' => [
+            'driver' => 'eloquent',
+            'model' => StudentParent::class,
         ],
 
         // 'users' => [

@@ -14,15 +14,9 @@ class InvoiceController extends Controller
 {
     public function index()
     {
-
-
-
-
         $invoices = Invoice::with(['grade', 'level', 'expense'])->get();
         $expenses = Expense::all();
         $types = Invoice::TYPES;
-
-
         return view('invoice.index', compact('invoices', 'expenses', 'types'));
     }
 
@@ -55,11 +49,11 @@ class InvoiceController extends Controller
         return redirect()->route('invoice.index');
     }
 
-    public function updateInvoice(Request $request, Invoice $invoice, StudentAcount $studentAcount)
+    public function updateInvoice(Request $request, Invoice $invoice)
     {
-        $expense = Expense::where('id', $invoice['expense_id'])->first();
+        // $expense = Expense::where('id', $invoice['expense_id'])->first();
+        // $student=Student::findOrFail()
 
-
-        $invoice->update(['description' => $request->description, 'expense_id' => $request->expense_id, 'amount' => $expense->amount]);
+        // $invoice->update(['description' => $request->description, 'expense_id' => $request->expense_id, 'amount' => $expense->amount]);
     }
 }
