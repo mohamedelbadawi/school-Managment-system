@@ -11,6 +11,7 @@ use App\Http\Controllers\LevelController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\StudentParentController;
+use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\UpgradeController;
 use Illuminate\Support\Facades\Route;
@@ -84,6 +85,11 @@ Route::group(
             Route::get('/payments/create/{student}', [PaymentController::class, 'create'])->name('payment.create');
             Route::post('/payments/store/{student}', [PaymentController::class, 'store'])->name('payment.store');
             Route::get('/receipt/{payment}', [PaymentController::class, 'getReceipt'])->name('payment.receipt');
+            // subjects
+            Route::get('/subjects', [SubjectController::class, 'index'])->name('subject.index');
+            Route::post('/subjects/store', [SubjectController::class, 'store'])->name('subject.store');
+            Route::delete('/subjects/delete/{subject}', [SubjectController::class, 'delete'])->name('subject.delete');
+            Route::PATCH('/subjects/update/{subject}', [SubjectController::class, 'update'])->name('subject.update');
         });
         // Auth::routes();
         // auth

@@ -10,12 +10,12 @@ class ExpensesDropdown extends Component
     public $levels = [], $grades;
     public $level_id, $grade_id;
 
-    public function mount($grades, $expense = null)
+    public function mount($grades, $data = null)
     {
         $this->grades = $grades;
-        if ($expense) {
-            $this->grade_id = $expense->grade_id;
-            $this->level_id = $expense->level_id;
+        if ($data) {
+            $this->grade_id = $data->grade_id;
+            $this->level_id = $data->level_id;
         }
     }
     public function render()

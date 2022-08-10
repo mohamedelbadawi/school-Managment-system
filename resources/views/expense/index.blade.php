@@ -206,7 +206,7 @@
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    @livewire('expenses-dropdown', ['grades' => $grades, 'expense' => $expense])
+                                    @livewire('expenses-dropdown', ['grades' => $grades, 'data' => $expense])
 
                                     <div class="form-group">
                                         <label for="">year</label>

@@ -44,6 +44,15 @@
 
                     </li>
                     <li>
+                        <a href="{{ route('subject.index') }}">
+                            <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">subjects</span>
+                            </div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+
+                    </li>
+                    <li>
                         <a href="{{ route('invoice.index') }}">
                             <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">Invoices</span>
                             </div>
