@@ -52,6 +52,23 @@
                         </a>
 
                     </li>
+
+                    @auth('teacher')
+                        <li>
+
+
+                            <a href="javascript:void(0);" data-toggle="collapse" data-target="#quizzes">
+                                <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">quizzes</span>
+                                </div>
+                                <div class="pull-right"><i class="ti-plus"></i></div>
+                                <div class="clearfix"></div>
+                            </a>
+                            <ul id="quizzes" class="collapse" data-parent="#sidebarnav">
+                                <li> <a href="{{ route('quiz.index') }}">quizzes</a> </li>
+                                <li> <a href="{{ route('quiz.create') }}">create quiz</a> </li>
+                            </ul>
+                        </li>
+                    @endauth
                     <li>
                         <a href="{{ route('invoice.index') }}">
                             <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">Invoices</span>

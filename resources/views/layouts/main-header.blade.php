@@ -125,7 +125,7 @@
                             </div>
                         </div>
 
-                        {{-- @dd(auth()->guard()->getName()); --}}
+                        {{-- @dd(auth('teacher')->check()) --}}
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#"><i class="text-secondary ti-reload"></i>Activity</a>
                         <a class="dropdown-item" href="#"><i class="text-success ti-email"></i>Messages</a>

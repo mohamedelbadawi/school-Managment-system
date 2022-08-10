@@ -90,12 +90,12 @@ Route::group(
             Route::post('/subjects/store', [SubjectController::class, 'store'])->name('subject.store');
             Route::delete('/subjects/delete/{subject}', [SubjectController::class, 'delete'])->name('subject.delete');
             Route::PATCH('/subjects/update/{subject}', [SubjectController::class, 'update'])->name('subject.update');
+            Route::get('logout/{type}/', [LoginController::class, 'logout'])->name('logout');
         });
-        // Auth::routes();
+        // Auth::routes(['register']);
         // auth
         Route::get('login/{type}', [LoginController::class, 'loginForm'])->middleware('guest')->name('login.show');
         Route::post('login/', [LoginController::class, 'login'])->middleware('guest')->name('login');
-        Route::get('logout/{type}/', [LoginController::class, 'logout'])->middleware('auth')->name('logout');
     }
 );
 
