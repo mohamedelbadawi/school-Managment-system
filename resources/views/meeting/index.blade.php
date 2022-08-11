@@ -8,9 +8,11 @@
         <div class="col-xl-12 mb-30">
             <div class="card card-statistics h-100">
                 <div class="card-header">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createModal">
-                        Add meeting
-                    </button>
+                    @auth('teacher')
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createModal">
+                            Add meeting
+                        </button>
+                    @endauth
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -25,7 +27,10 @@
                                     <th>subject</th>
                                     <th>start at</th>
                                     <th>join now</th>
-                                    <th>Actions</th>
+                                    @auth('teacher')
+                                        <th>start now</th>
+                                        <th>Actions</th>
+                                    @endauth
 
                                 </tr>
                             </thead>
@@ -40,17 +45,24 @@
                                         <td>{{ $meeting->subject->name }}</td>
                                         <td>{{ $meeting->start_at }}</td>
                                         <td><a href="{{ $meeting->join_url }}" class="btn-outline-danger">join now</a> </td>
-                                        <td>
-                                            <button class="btn btn-primary" data-toggle="modal"
-                                                data-target="#editModal-{{ $meeting->id }}">
-                                                Edit
-                                            </button>
-                                            <button class="btn btn-danger" data-toggle="modal"
-                                                data-target="#deleteModal-{{ $meeting->id }}">
-                                                Delete
-                                            </button>
 
-                                        </td>
+
+                                        @auth('teacher')
+                                            <td><a href="{{ $meeting->start_url }}" class="btn-outline-danger">start now</a>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-primary" data-toggle="modal"
+                                                    data-target="#editModal-{{ $meeting->id }}">
+                                                    Edit
+                                                </button>
+                                                <button class="btn btn-danger" data-toggle="modal"
+                                                    data-target="#deleteModal-{{ $meeting->id }}">
+                                                    Delete
+                                                </button>
+
+                                            </td>
+                                        @endauth
+
                                     </tr>
                                 @endforeach
 
@@ -65,7 +77,10 @@
                                     <th>subject</th>
                                     <th>start at</th>
                                     <th>join now</th>
-                                    <th>Actions</th>
+                                    @auth('teacher')
+                                        <th>start now</th>
+                                        <th>Actions</th>
+                                    @endauth
 
                                 </tr>
                             </tfoot>

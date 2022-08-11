@@ -36,6 +36,7 @@ class StudentController extends Controller
     public function dashboard()
     {
 
+      
         return view('student.dashboard');
     }
 
@@ -65,7 +66,7 @@ class StudentController extends Controller
                     'ar' => $request->name_ar,
                 ],
                 'email' => $request->email,
-                'password' => $request->password,
+                'password' => bcrypt($request->password),
                 'blood_type_id' => $request->blood_id,
                 'nationalitie_id' => $request->nationlitie_id,
                 'student_parent_id' => $request->parent_id,

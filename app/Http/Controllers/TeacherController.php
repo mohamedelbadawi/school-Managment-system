@@ -8,6 +8,7 @@ use App\Models\Gender;
 use App\Models\Specialization;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TeacherController extends Controller
 {
@@ -85,5 +86,17 @@ class TeacherController extends Controller
             toastr()->error('teacher can\'t updated right now');
             return redirect()->route('teacher.index');
         }
+    }
+    public function logout(Request $request, $type)
+    {
+
+        // dd($request, $type);
+        Auth::guard($type)->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 }

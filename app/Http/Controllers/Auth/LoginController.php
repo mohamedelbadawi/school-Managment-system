@@ -54,16 +54,33 @@ class LoginController extends Controller
         return redirect()->back();
     }
 
-    public function logout(Request $request, $type)
+    public function logout(Request $request)
     {
 
-        // dd($request, $type);
-        Auth::guard()->logout();
 
+        if (Auth::guard('web')->check()) {
+            Auth::guard('web')->logout();
+            return redirect()->route('selection');
+        }
+
+        if (Auth::guard('teacher')->check()) {
+            Auth::guard('teacher')->logout();
+            return redirect()->route('selection');
+        }
+
+
+        if (Auth::guard('student')->check()) {
+            Auth::guard('student')->logout();
+            return redirect()->route('selection');
+        }
+        if (Auth::guard('parent')->check()) {
+            Auth::guard('parent')->logout();
+            return redirect()->route('selection');
+        }
+
+        $this->guard()->logout();
         $request->session()->invalidate();
 
-        $request->session()->regenerateToken();
-
-        return redirect('/');
+        return $this->loggedOut($request) ?: redirect('/');
     }
 }

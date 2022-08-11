@@ -90,8 +90,8 @@ Route::group(
             Route::post('/subjects/store', [SubjectController::class, 'store'])->name('subject.store');
             Route::delete('/subjects/delete/{subject}', [SubjectController::class, 'delete'])->name('subject.delete');
             Route::PATCH('/subjects/update/{subject}', [SubjectController::class, 'update'])->name('subject.update');
-            Route::get('logout/{type}/', [LoginController::class, 'logout'])->name('logout');
         });
+        Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
         // Auth::routes(['register']);
         // auth
         Route::get('login/{type}', [LoginController::class, 'loginForm'])->middleware('guest')->name('login.show');
@@ -100,7 +100,7 @@ Route::group(
 );
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('selection');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware('guest')->name('selection');
 
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

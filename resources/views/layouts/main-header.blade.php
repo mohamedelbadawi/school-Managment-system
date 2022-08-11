@@ -68,18 +68,20 @@
                             <span class="badge badge-pill badge-warning">05</span>
                         </div>
                         <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">New registered user <small
-                                class="float-right text-muted time">Just now</small> </a>
-                        <a href="#" class="dropdown-item">New invoice received <small
-                                class="float-right text-muted time">22 mins</small> </a>
-                        <a href="#" class="dropdown-item">Server error report<small
-                                class="float-right text-muted time">7 hrs</small> </a>
-                        <a href="#" class="dropdown-item">Database report<small
-                                class="float-right text-muted time">1
-                                days</small> </a>
-                        <a href="#" class="dropdown-item">Order confirmation<small
-                                class="float-right text-muted time">2
-                                days</small> </a>
+                        @auth('student')
+
+                            @foreach (auth('student')->user()->unreadNotifications as $notification)
+                                <div class="p-2">
+                                    <a href="{{route('meeting.index')}}" class="dropdown-item">{{ $notification->data['teacher'] }}
+                                        created a meeting at {{ $notification->data['start_at'] }}
+
+                                        <small
+                                            class="float-right text-muted time mt-1">{{ $notification->created_at->diffForHumans() }}</small>
+                                    </a>
+                                </div>
+                            @endforeach
+                        @endauth
+
                     </div>
                 </li>
 
@@ -119,13 +121,28 @@
                         <div class="dropdown-header">
                             <div class="media">
                                 <div class="media-body">
-                                    <h5 class="mt-0 mb-0">Michael Bean</h5>
+                                    @auth('student')
+                                        <h5 class="mt-0 mb-0">{{ auth('student')->user()->name }} </h5>
+                                    @endauth
+
+                                    @auth('teacher')
+                                        <h5 class="mt-0 mb-0">{{ auth('teacher')->user()->name }}</h5>
+                                    @endauth
+
+                                    @auth('web')
+                                        <h5 class="mt-0 mb-0">{{ auth('web')->user()->name }}</h5>
+                                    @endauth
+
+                                    @auth('parent')
+                                        <h5 class="mt-0 mb-0">{{ auth('parent')->user()->name }}</h5>
+                                    @endauth
+
                                     <span>michael-bean@mail.com</span>
                                 </div>
                             </div>
                         </div>
 
-                        {{-- @dd(auth('teacher')->check()) --}}
+
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#"><i class="text-secondary ti-reload"></i>Activity</a>
                         <a class="dropdown-item" href="#"><i class="text-success ti-email"></i>Messages</a>
@@ -134,20 +151,15 @@
                                 class="badge badge-info">6</span> </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#"><i class="text-info ti-settings"></i>Settings</a>
-                        @if (auth('student')->check())
-                            <form method="GET" action="{{ route('logout', 'student') }}">
-                            @elseif(auth('teacher')->check())
-                                <form method="GET" action="{{ route('logout', 'teacher') }}">
-                                @elseif(auth('parent')->check())
-                                    <form method="GET" action="{{ route('logout', 'parent') }}">
-                                    @else
-                                        <form method="GET" action="{{ route('logout', 'web') }}">
-                        @endif
 
-                        @csrf
-                        <a class="dropdown-item" href="#"
-                            onclick="event.preventDefault();this.closest('form').submit();"><i
-                                class="text-danger ti-unlock"></i>Logout </a>
+
+                        <form method="post" action="{{ route('logout') }}">
+
+
+                            @csrf
+                            <a class="dropdown-item" href="#"
+                                onclick="event.preventDefault();this.closest('form').submit();"><i
+                                    class="text-danger ti-unlock"></i>Logout </a>
                         </form>
                     </div>
                 </li>
@@ -156,4 +168,4 @@
 
 
         <!--=================================
- header End-->
+header End-->

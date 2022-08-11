@@ -8,10 +8,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use phpDocumentor\Reflection\Types\Parent_;
 use phpDocumentor\Reflection\Types\This;
 use Spatie\Translatable\HasTranslations;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class Student extends Model
+class Student extends Authenticatable
 {
     use HasFactory, HasTranslations, SoftDeletes;
+    use Notifiable;
     protected $guarded = [];
     public $translatable = ['name'];
     public $timestamps = false;

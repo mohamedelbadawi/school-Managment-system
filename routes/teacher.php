@@ -25,10 +25,9 @@ Route::group(
             Route::get('quizzes/', [QuizController::class, 'index'])->name('quiz.index');
             Route::delete('quizzes/delete/{quiz}', [QuizController::class, 'delete'])->name('quiz.delete');
             // create meeting
-            Route::get('/meetings', [MeetingController::class, 'index'])->name('meeting.index');
             Route::post('/meetings/store', [MeetingController::class, 'store'])->name('meeting.store');
+            // Route::get('logout/{type}/', [LoginController::class, 'logout'])->name('logout.teacher');
         });
-
-        // Route::get('logout/{type}/', [LoginController::class, 'logout'])->middleware('auth:teacher')->name('logout');
+        Route::get('/meetings', [MeetingController::class, 'index'])->name('meeting.index');
     }
 );

@@ -10,8 +10,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Teacher extends Authenticatable
 {
     use HasFactory, HasTranslations;
+    protected $guard = 'teacher';
     protected $guarded = [];
     public $translatable = ['name'];
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
 
 
 
