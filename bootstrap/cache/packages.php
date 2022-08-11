@@ -67,6 +67,37 @@
       'Livewire' => 'Livewire\\Livewire',
     ),
   ),
+  'macsidigital/laravel-api-client' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'MacsiDigital\\API\\Providers\\APIServiceProvider',
+    ),
+    'aliases' => 
+    array (
+    ),
+  ),
+  'macsidigital/laravel-oauth2-client' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'MacsiDigital\\OAuth2\\Providers\\OAuth2ServiceProvider',
+    ),
+    'aliases' => 
+    array (
+    ),
+  ),
+  'macsidigital/laravel-zoom' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'MacsiDigital\\Zoom\\Providers\\ZoomServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Zoom' => 'MacsiDigital\\Zoom\\Facades\\Zoom',
+    ),
+  ),
   'mcamara/laravel-localization' => 
   array (
     'providers' => 

@@ -68,6 +68,16 @@
                                 <li> <a href="{{ route('quiz.create') }}">create quiz</a> </li>
                             </ul>
                         </li>
+
+                        <li>
+                            <a href="{{ route('meeting.index') }}">
+                                <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">meetings</span>
+                                </div>
+                                <div class="pull-right"><i class="ti-plus"></i></div>
+                                <div class="clearfix"></div>
+                            </a>
+
+                        </li>
                     @endauth
                     <li>
                         <a href="{{ route('invoice.index') }}">
@@ -116,7 +126,8 @@
                     </li>
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#parent-menu">
-                            <div class="pull-left"><i class="ti-person"></i><span class="right-nav-text">Parents</span>
+                            <div class="pull-left"><i class="ti-person"></i><span
+                                    class="right-nav-text">Parents</span>
                             </div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
