@@ -10,6 +10,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\StudentParentController;
 use App\Http\Controllers\SubjectController;
@@ -98,6 +99,8 @@ Route::group(
         // auth
         Route::get('login/{type}', [LoginController::class, 'loginForm'])->middleware('guest')->name('login.show');
         Route::post('login/', [LoginController::class, 'login'])->middleware('guest')->name('login');
+        Route::get('/settings', [SettingController::class, 'index'])->name('setting.index');
+        Route::PATCH('/settings/update', [SettingController::class, 'update'])->name('setting.update');
     }
 );
 

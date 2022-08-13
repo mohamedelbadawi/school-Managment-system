@@ -3,9 +3,9 @@
         <nav class="admin-header navbar navbar-default col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <!-- logo -->
             <div class="text-left navbar-brand-wrapper">
-                <a class="navbar-brand brand-logo" href="index.html"><img src="{{ asset('assets/images/logo-dark.png') }}"
+                <a class="navbar-brand brand-logo" href="{{route('dashboard')}}"><img src=""
                         alt=""></a>
-                <a class="navbar-brand brand-logo-mini" href="index.html"><img
+                <a class="navbar-brand brand-logo-mini" href="{{route('dashboard')}}"><img
                         src="{{ asset('assets/images/logo-icon-dark.png') }}" alt=""></a>
             </div>
             <!-- Top bar left -->
@@ -72,7 +72,8 @@
 
                             @foreach (auth('student')->user()->unreadNotifications as $notification)
                                 <div class="p-2">
-                                    <a href="{{route('meeting.index')}}" class="dropdown-item">{{ $notification->data['teacher'] }}
+                                    <a href="{{ route('meeting.index') }}"
+                                        class="dropdown-item">{{ $notification->data['teacher'] }}
                                         created a meeting at {{ $notification->data['start_at'] }}
 
                                         <small
@@ -150,7 +151,8 @@
                         <a class="dropdown-item" href="#"><i class="text-dark ti-layers-alt"></i>Projects <span
                                 class="badge badge-info">6</span> </a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#"><i class="text-info ti-settings"></i>Settings</a>
+                        <a class="dropdown-item" href="{{ route('setting.index') }}"><i
+                                class="text-info ti-settings"></i>Settings</a>
 
 
                         <form method="post" action="{{ route('logout') }}">
