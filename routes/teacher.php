@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\QuizController;
@@ -27,6 +28,9 @@ Route::group(
             // create meeting
             Route::post('/meetings/store', [MeetingController::class, 'store'])->name('meeting.store');
             // Route::get('logout/{type}/', [LoginController::class, 'logout'])->name('logout.teacher');
+            Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance.index');
+            Route::get('/attendance/{classRoom}', [AttendanceController::class, 'show'])->name('attendance.show');
+            Route::post('/attendance/store', [AttendanceController::class, 'store'])->name('attendance.store');
         });
         Route::get('/meetings', [MeetingController::class, 'index'])->name('meeting.index');
     }

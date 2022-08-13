@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BloodType;
+use App\Models\StudentParent;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -28,7 +30,7 @@ class HomeController extends Controller
     public function dashboard()
     {
 
-
+            // dd(StudentParent::first());
         $this->middleware('auth');
 
         return view('dashboard');

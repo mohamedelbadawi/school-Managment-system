@@ -19,9 +19,6 @@ class Teacher extends Authenticatable
     ];
 
 
-
-
-
     public function classrooms()
     {
         return $this->belongsToMany(ClassRoom::class);

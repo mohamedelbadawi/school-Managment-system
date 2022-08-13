@@ -1,6 +1,7 @@
 
 <?php
 
+use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ClassRoomController;
 use App\Http\Controllers\ExpenseController;
@@ -90,6 +91,7 @@ Route::group(
             Route::post('/subjects/store', [SubjectController::class, 'store'])->name('subject.store');
             Route::delete('/subjects/delete/{subject}', [SubjectController::class, 'delete'])->name('subject.delete');
             Route::PATCH('/subjects/update/{subject}', [SubjectController::class, 'update'])->name('subject.update');
+            // attendance
         });
         Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
         // Auth::routes(['register']);

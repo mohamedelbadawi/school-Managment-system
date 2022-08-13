@@ -13,6 +13,5 @@ class StudentParentSeeder extends Seeder
      */
     public function run()
     {
-        //
     }
 }

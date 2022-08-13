@@ -14,14 +14,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(BloodTypeSeeder::class);
-        $this->call(NationalitieSeeder::class);
-        $this->call(ReligionSeeder::class);
-        $this->call(UserSeeder::class);
-        $this->call(GenderSeeder::class);
-        $this->call(SpecializationSeeder::class);
-        $this->call(GradeSeeder::class);
-        $this->call(LevelSeeder::class);
-        $this->call(ClassRoomSeeder::class);
+        // $this->call(BloodTypeSeeder::class);
+        // $this->call(NationalitieSeeder::class);
+        // $this->call(ReligionSeeder::class);
+        // $this->call(UserSeeder::class);
+        // $this->call(GenderSeeder::class);
+        // $this->call(SpecializationSeeder::class);
+        // $this->call(GradeSeeder::class);
+        // $this->call(LevelSeeder::class);
+        // $this->call(ClassRoomSeeder::class);
+        $this->call(StudentSeeder::class);
     }
 }

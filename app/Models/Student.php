@@ -49,7 +49,10 @@ class Student extends Authenticatable
         return $this->belongsTo(ClassRoom::class, 'class_room_id');
     }
 
-
+    public function attendance()
+    {
+        return $this->hasMany(Attendance::class);
+    }
 
     public function images()
     {
