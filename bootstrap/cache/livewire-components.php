@@ -3,6 +3,7 @@
   'add-classroom' => 'App\\Http\\Livewire\\AddClassroom',
   'add-parent-data' => 'App\\Http\\Livewire\\AddParentData',
   'attendance' => 'App\\Http\\Livewire\\Attendance',
+  'calendar' => 'App\\Http\\Livewire\\Calendar',
   'edit-classroom' => 'App\\Http\\Livewire\\EditClassroom',
   'expenses-dropdown' => 'App\\Http\\Livewire\\ExpensesDropdown',
   'graduation-table' => 'App\\Http\\Livewire\\GraduationTable',

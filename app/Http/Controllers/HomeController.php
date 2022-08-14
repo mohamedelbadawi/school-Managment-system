@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\BloodType;
+use App\Models\Student;
 use App\Models\StudentParent;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -15,6 +17,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
+        $this->middleware('auth')->except('index');
     }
 
     /**
@@ -30,9 +33,10 @@ class HomeController extends Controller
     public function dashboard()
     {
 
-            // dd(StudentParent::first());
-        $this->middleware('auth');
+        $data['students'] = Student::count();
+        $data['teachers'] = Teacher::count();
+        $data['parents'] = StudentParent::count();
 
-        return view('dashboard');
+        return view('dashboard', compact('data'));
     }
 }

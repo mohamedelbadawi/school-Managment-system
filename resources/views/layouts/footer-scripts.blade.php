@@ -1,4 +1,5 @@
 @livewireScripts
+
 <!-- jquery -->
 <script src="{{ URL::asset('assets/js/jquery-3.3.1.min.js') }}"></script>
 <!-- plugins-jquery -->
