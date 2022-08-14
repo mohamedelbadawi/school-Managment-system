@@ -72,4 +72,14 @@ class ClassRoomController extends Controller
             return redirect()->route('classroom.index');
         }
     }
+
+    public function getClassroomStudents(ClassRoom $classRoom)
+    {
+        try {
+            $students = $classRoom->students;
+            return view('classroom.students', compact('students'));
+        } catch (\Exception $e) {
+            return redirect()->back()->with(['error' => $e->getMessage()]);
+        }
+    }
 }

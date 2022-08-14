@@ -101,6 +101,8 @@ Route::group(
         Route::post('login/', [LoginController::class, 'login'])->middleware('guest')->name('login');
         Route::get('/settings', [SettingController::class, 'index'])->name('setting.index');
         Route::PATCH('/settings/update', [SettingController::class, 'update'])->name('setting.update');
+
+        Route::get('/classroom/{classRoom}/students', [ClassRoomController::class, 'getClassroomStudents'])->name('classroom.students');
     }
 );
 

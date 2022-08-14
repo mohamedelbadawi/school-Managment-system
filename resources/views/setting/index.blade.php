@@ -101,8 +101,7 @@
                             </div>
                         </div>
                         <hr>
-                        <button class="btn btn-success btn-sm nextBtn btn-lg pull-right"
-                            type="submit">{{ trans('Students_trans.submit') }}</button>
+                        <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" type="submit">submit</button>
                     </form>
                 </div>
             </div>

@@ -58,4 +58,9 @@ class Student extends Authenticatable
     {
         return $this->morphMany(Image::class, 'imageable');
     }
+
+    public function religion()
+    {
+        return $this->belongsTo(Religion::class);
+    }
 }

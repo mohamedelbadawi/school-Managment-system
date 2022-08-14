@@ -52,6 +52,9 @@
                                                                 data-target="#deleteModal-{{ $classroom->id }}">
                                                                 Delete
                                                             </button>
+                                                            <a class="btn btn-warning" href="{{route('classroom.students',$classroom->id)}}">
+                                                                view students
+                                                        </a>
 
                                                         </td>
                                                     </tr>

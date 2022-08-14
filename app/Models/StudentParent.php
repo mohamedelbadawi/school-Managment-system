@@ -17,4 +17,9 @@ class StudentParent extends Model
 
         return $this->hasMany(ParentAttachment::class);
     }
+
+    public function religion()
+    {
+        return $this->belongsTo(Religion::class, 'father_religion_id');
+    }
 }
