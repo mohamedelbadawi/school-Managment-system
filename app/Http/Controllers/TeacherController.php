@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\storeTeacherRequest;
+use App\Http\Requests\updateTeacherProfileRequest;
 use App\Http\Requests\updateTeacherRequest;
 use App\Models\Gender;
 use App\Models\Specialization;
@@ -98,5 +99,40 @@ class TeacherController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/');
+    }
+
+
+
+
+
+    public function showProfile()
+    {
+        $data = auth('teacher')->user();
+
+        return view('teacher.profile', compact('data'));
+    }
+
+    public function updateProfile(updateTeacherProfileRequest $request)
+    {
+        try {
+            $teacher = auth('teacher')->user();
+            if ($request->password == null) {
+                $teacher->update(['name' => [
+                    'ar' => $request->name_ar,
+                    'en' => $request->name_en
+                ]]);
+            } else {
+                $teacher->update([
+                    'name' => [
+                        'ar' => $request->name_ar,
+                        'en' => $request->name_en,
+                    ],
+                    'password' => $request->password
+                ]);
+            }
+            return redirect()->back()->with(['success' => 'updated successfully']);
+        } catch (\Exception $e) {
+            return redirect()->back()->with(['error' => $e->getMessage()]);
+        }
     }
 }

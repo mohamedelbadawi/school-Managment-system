@@ -31,6 +31,8 @@ Route::group(
             Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance.index');
             Route::get('/attendance/{classRoom}', [AttendanceController::class, 'show'])->name('attendance.show');
             Route::post('/attendance/store', [AttendanceController::class, 'store'])->name('attendance.store');
+            Route::get('/profile', [TeacherController::class, 'showProfile'])->name('teacher.profile');
+            Route::post('/profile/update', [TeacherController::class, 'updateProfile'])->name('teacher.update');
         });
         Route::get('/meetings', [MeetingController::class, 'index'])->name('meeting.index');
     }

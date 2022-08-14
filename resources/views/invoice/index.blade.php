@@ -33,7 +33,7 @@
                                                     <td>{{ $invoice->student->name }}</td>
                                                     <td>{{ $invoice->expense->title }}</td>
                                                     <td>{{ number_format($invoice->amount, 2) }}</td>
-                                               
+
                                                     <td>{{ $invoice->description ? $invoice->description : '-' }}</td>
                                                     <td>
                                                         {{-- <button data-toggle="modal"
@@ -70,7 +70,7 @@
 
 
 
-   
+
 
 
 

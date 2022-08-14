@@ -8,9 +8,11 @@
         <div class="card card-statistics h-100">
             <div class="card-header d-flex justify-content-end">
 
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addlevelModal">
-                    Add classroom
-                </button>
+                
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addlevelModal">
+                        Add classroom
+                    </button>
+                
             </div>
             <div class="card-body">
                 <h5 class="card-title">Classrooms of grades</h5>
@@ -52,9 +54,11 @@
                                                                 data-target="#deleteModal-{{ $classroom->id }}">
                                                                 Delete
                                                             </button>
-                                                            <a class="btn btn-warning" href="{{route('classroom.students',$classroom->id)}}">
+
+                                                            <a class="btn btn-warning"
+                                                                href="{{ route('classroom.students', $classroom->id) }}">
                                                                 view students
-                                                        </a>
+                                                            </a>
 
                                                         </td>
                                                     </tr>

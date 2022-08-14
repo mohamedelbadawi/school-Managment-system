@@ -28,7 +28,13 @@
 
         @include('layouts.main-header')
 
-        @include('layouts.main-sidebar')
+        {{-- @include('layouts.main-header') --}}
+        @if (auth('teacher')->check())
+            @include('layouts.sidebar.teacher-sidebar')
+        @endif
+        @if (auth('web')->check())
+            @include('layouts.sidebar.admin-sidebar')
+        @endif
 
         <!--=================================
  Main content -->
