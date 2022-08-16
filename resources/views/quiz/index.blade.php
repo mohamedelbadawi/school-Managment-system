@@ -21,6 +21,7 @@
                                     <th>level</th>
                                     <th>classroom</th>
                                     <th>subject</th>
+                                    <th>status</th>
                                     <th>questions number</th>
                                     <th>Actions</th>
 
@@ -34,6 +35,8 @@
                                         <td>{{ $quiz->level->name }}</td>
                                         <td>{{ $quiz->classroom->name }}</td>
                                         <td>{{ $quiz->subject->name }}</td>
+                                        <td class="{{ $quiz->status == 'Available' ? 'badge-success' : 'badge-danger' }}">
+                                            {{ $quiz->status }}</td>
                                         <td>{{ $quiz->questions->count() }}</td>
 
                                         <td>
@@ -46,6 +49,13 @@
                                             <button type="button" class="btn  btn-sm btn-danger " data-toggle="modal"
                                                 data-target="#deletModal-{{ $quiz->id }}" title="delete"><i
                                                     class="fa fa-trash"></i></button>
+
+
+                                            <a type="button" href="{{ route('teacher.quiz.result', $quiz->id) }}"
+                                                class="btn  btn-sm btn-success " title="delete"> show results</a>
+
+                                            <a type="button" href="{{ route('teacher.quiz.close', $quiz->id) }}"
+                                                class="btn  btn-sm btn-warning " title="close"> close exam</a>
                                         </td>
 
 
@@ -116,7 +126,7 @@
     </div>
 
 
-    
+
     </div>
     </div>
 @endsection

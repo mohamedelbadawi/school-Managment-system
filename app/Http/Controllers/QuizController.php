@@ -8,6 +8,7 @@ use App\Models\Grade;
 use App\Models\Quiz;
 use Illuminate\Http\Request;
 use App\Models\Question;
+use App\Models\Student;
 use Illuminate\Support\Facades\Redirect;
 
 class QuizController extends Controller
@@ -120,5 +121,24 @@ class QuizController extends Controller
             toastr()->error('something error!');
         }
         return redirect()->route('quiz.index');
+    }
+
+
+    public function showStudentsResult(Quiz $quiz)
+    {
+        $students = Student::where('class_room_id', $quiz->class_room_id)->with(['result', 'gender'])->get();
+
+        return view('quiz.teacher.results', compact('students', 'quiz'));
+    }
+
+    public function closeQuiz(Quiz $quiz)
+
+    {
+        try {
+            $quiz->update(['status' => 'End']);
+            return back()->with(['success', 'quiz closed successfully']);
+        } catch (\Exception $e) {
+            return back()->with(['error', $e->getMessage()]);
+        }
     }
 }

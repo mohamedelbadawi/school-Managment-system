@@ -27,7 +27,7 @@ class Quiz extends Model
     }
     public function questions()
     {
-        return $this->hasMany(Question::class);
+        return $this->hasMany(Question::class)->inRandomOrder();
     }
     public function questionsCount()
     {

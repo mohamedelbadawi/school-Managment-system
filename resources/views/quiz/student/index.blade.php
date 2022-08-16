@@ -38,7 +38,7 @@
                                                             </a>
                                                         @else
                                                             <p>
-                                                                {{ $quiz->degree($quiz->id) }}
+                                                                {{ auth('student')->user()->quizResult($quiz->id) }}
                                                             </p>
                                                         @endif
 

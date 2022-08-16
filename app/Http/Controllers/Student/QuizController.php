@@ -33,7 +33,7 @@ class QuizController extends Controller
             foreach ($request->except('_token') as $k => $v) {
                 $question = Question::findOrFail($k);
                 if ($question->right_answer == $v) {
-                    QuestionResult::create([
+                    QuestionResult::updateorCreate([
                         'student_id' => auth('student')->id(),
                         'quiz_id' => $quiz->id,
                         'question_id' => $question->id, 'points' => $question->point
