@@ -14,8 +14,8 @@
                                             <tr>
                                                 <th>#</th>
                                                 <th> subject</th>
-                                                <th>name </th>
                                                 <th>status </th>
+                                                <th>name </th>
                                                 <th> attempt/ result </th>
                                             </tr>
                                         </thead>

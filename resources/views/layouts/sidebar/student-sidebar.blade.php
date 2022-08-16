@@ -17,8 +17,8 @@
 
                     <br>
                     <hr>
-                    <li class="{{ Route::currentRouteName() == 'attendance.index' ? 'active' : '' }}">
-                        <a href="{{ route('attendance.index') }}">
+                    <li class="{{ Route::currentRouteName() == 'student.attendance' ? 'active' : '' }}">
+                        <a href="{{ route('student.attendance') }}">
                             <div class="pull-left"><i class="fa fa-users" aria-hidden="true"></i></i><span
                                     class="right-nav-text">Attendance</span>
                             </div>
@@ -27,7 +27,8 @@
                         </a>
 
                     </li>
-                    <li class="{{ Route::currentRouteName() == 'quiz.index'||Route::currentRouteName() =='quiz.create' ? 'active' : '' }}">
+                    <li
+                        class="{{ Route::currentRouteName() == 'student.quiz.index' || Route::currentRouteName() == 'quiz.create' ? 'active' : '' }}">
 
 
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#quizzes">

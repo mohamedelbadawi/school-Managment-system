@@ -39,7 +39,7 @@
                     <a class="nav-link top-nav" data-toggle="dropdown" href="#" role="button"
                         aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-language"></i>
-                        <span class="badge badge-danger notification-status"> </span>
+                       
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-big dropdown">
                         <div class="dropdown-header ">
@@ -59,12 +59,12 @@
                     <a class="nav-link top-nav" data-toggle="dropdown" href="#" role="button"
                         aria-haspopup="true" aria-expanded="false">
                         <i class="ti-bell"></i>
-                        <span class="badge badge-danger notification-status"> </span>
+                        <span class="badge badge-pill badge-danger">{{auth('student')->user()->unreadNotifications->count()}}</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-big dropdown-notifications">
                         <div class="dropdown-header notifications">
                             <strong>Notifications</strong>
-                            <span class="badge badge-pill badge-warning">05</span>
+                            
                         </div>
                         <div class="dropdown-divider"></div>
                         @auth('student')
@@ -85,37 +85,10 @@
                     </div>
                 </li>
 
-
-                <li class="nav-item dropdown ">
-                    <a class="nav-link top-nav" data-toggle="dropdown" href="#" role="button"
-                        aria-haspopup="true" aria-expanded="true"> <i class=" ti-view-grid"></i> </a>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-big">
-                        <div class="dropdown-header">
-                            <strong>Quick Links</strong>
-                        </div>
-                        <div class="dropdown-divider"></div>
-                        <div class="nav-grid">
-                            <a href="#" class="nav-grid-item"><i class="ti-files text-primary"></i>
-                                <h5>New Task</h5>
-                            </a>
-                            <a href="#" class="nav-grid-item"><i class="ti-check-box text-success"></i>
-                                <h5>Assign Task</h5>
-                            </a>
-                        </div>
-                        <div class="nav-grid">
-                            <a href="#" class="nav-grid-item"><i class="ti-pencil-alt text-warning"></i>
-                                <h5>Add Orders</h5>
-                            </a>
-                            <a href="#" class="nav-grid-item"><i class="ti-truck text-danger "></i>
-                                <h5>New Orders</h5>
-                            </a>
-                        </div>
-                    </div>
-                </li>
                 <li class="nav-item dropdown mr-30">
                     <a class="nav-link nav-pill user-avatar" data-toggle="dropdown" href="#" role="button"
                         aria-haspopup="true" aria-expanded="false">
-                        <img src="assets/images/profile-avatar.jpg" alt="avatar">
+                        <img src="{{ URL::asset('assets/images/student.png') }}" alt="avatar">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <div class="dropdown-header">
@@ -138,18 +111,14 @@
                             <a class="dropdown-item" href="{{ route('teacher.profile') }}"><i
                                     class="text-warning ti-user"></i>Profile</a>
                         @endauth
+
                         @auth('student')
                             <a class="dropdown-item" href="{{ route('student.profile') }}"><i
                                     class="text-warning ti-user"></i>Profile</a>
                         @endauth
 
 
-
-                        <a class="dropdown-item" href="#"><i class="text-dark ti-layers-alt"></i>Projects <span
-                                class="badge badge-info">6</span> </a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{{ route('setting.index') }}"><i
-                                class="text-info ti-settings"></i>Settings</a>
 
 
                         <form method="post" action="{{ route('logout') }}">
