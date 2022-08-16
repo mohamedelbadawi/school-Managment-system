@@ -38,4 +38,9 @@ class Quiz extends Model
     {
         return $this->belongsTo(Subject::class);
     }
+
+    public function isAttempted($id)
+    {
+        return (!Atempt::where('student_id', auth('student')->id())->where('quiz_id', $id)->count()) ? false : true;
+    }
 }

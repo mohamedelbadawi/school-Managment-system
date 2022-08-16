@@ -15,6 +15,8 @@ class CreateQuizzesTable extends Migration
     {
         Schema::create('quizzes', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->enum('status', ['End', 'Available'])->default('Available');
             $table->foreignId('teacher_id')->constrained()->cascadeOnDelete();
             $table->foreignId('subject_id')->constrained()->cascadeOnDelete();
             $table->foreignId('grade_id')->constrained()->cascadeOnDelete();

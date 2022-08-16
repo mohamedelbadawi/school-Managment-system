@@ -20,7 +20,7 @@ Route::group(
 
         Route::middleware(['auth:teacher'])->group(function () {
             Route::get('teacher/dashboard', [TeacherController::class, 'dashboard'])->name('teacher.dashboard');
-            // TODO:create quiz with question for only subject of the teacher
+            // TODO:create quiz with question for only subject of the 
             Route::get('quizzes/create', [QuizController::class, 'create'])->name('quiz.create');
             Route::post('quizzes/store', [QuizController::class, 'store'])->name('quiz.store');
             Route::get('quizzes/', [QuizController::class, 'index'])->name('quiz.index');
@@ -32,7 +32,7 @@ Route::group(
             Route::get('/attendance/{classRoom}', [AttendanceController::class, 'show'])->name('attendance.show');
             Route::post('/attendance/store', [AttendanceController::class, 'store'])->name('attendance.store');
             Route::get('/profile', [TeacherController::class, 'showProfile'])->name('teacher.profile');
-            Route::post('/profile/update', [TeacherController::class, 'updateProfile'])->name('teacher.update');
+            Route::post('/profile/update', [TeacherController::class, 'updateProfile'])->name('teacher.profile.update');
         });
         Route::get('/meetings', [MeetingController::class, 'index'])->name('meeting.index');
     }

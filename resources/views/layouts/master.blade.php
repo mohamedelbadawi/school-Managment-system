@@ -27,13 +27,16 @@
  preloader -->
 
         @include('layouts.main-header')
-
+        {{-- @dd(auth()->guard('web')) --}}
         {{-- @include('layouts.main-header') --}}
         @if (auth('teacher')->check())
             @include('layouts.sidebar.teacher-sidebar')
         @endif
         @if (auth('web')->check())
             @include('layouts.sidebar.admin-sidebar')
+        @endif
+        @if (auth('student')->check())
+            @include('layouts.sidebar.student-sidebar')
         @endif
 
         <!--=================================

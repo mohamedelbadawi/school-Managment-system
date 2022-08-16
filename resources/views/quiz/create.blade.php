@@ -27,6 +27,11 @@
                             <h4 class="mb-5"> Quiz</h3>
                                 <div class="card-header border">
                                     @livewire('quiz-data', ['grades' => $grades])
+                                    <div class="form-group border">
+                                        <input type="text" class="form-control" name="title" placeholder="title">
+                                    </div>
+
+
                                 </div>
 
 
@@ -44,15 +49,15 @@
                                                 </div>
                                                 <div class="form-group  col-3">
                                                     <input type="text" name="answer_2" class="form-control"
-                                                        placeholder="answer 1">
+                                                        placeholder="answer 2">
                                                 </div>
                                                 <div class="form-group  col-3">
                                                     <input type="text" name="answer_3" class="form-control"
-                                                        placeholder="answer 1">
+                                                        placeholder="answer 3">
                                                 </div>
                                                 <div class="form-group  col-3">
                                                     <input type="text" name="answer_4" class="form-control"
-                                                        placeholder="answer 1">
+                                                        placeholder="answer 4">
                                                 </div>
                                                 <div class="form-group  col-3">
                                                     <input type="text" name="right_answer" class="form-control"

@@ -63,4 +63,9 @@ class Student extends Authenticatable
     {
         return $this->belongsTo(Religion::class);
     }
+
+    public function quizzes()
+    {
+        return Quiz::where('class_room_id', $this->class_room_id)->with(['questions']);
+    }
 }

@@ -8,6 +8,7 @@ use App\Models\Grade;
 use App\Models\Quiz;
 use Illuminate\Http\Request;
 use App\Models\Question;
+use Illuminate\Support\Facades\Redirect;
 
 class QuizController extends Controller
 {
@@ -41,8 +42,10 @@ class QuizController extends Controller
      */
     public function store(storeQuizRequest $request)
     {
+        // dd($request);
         try {
             $quiz = Quiz::create([
+                'title' => $request->title,
                 'grade_id' => $request->grade_id,
                 'level_id' => $request->level_id,
                 'subject_id' => $request->subject_id,
@@ -61,11 +64,11 @@ class QuizController extends Controller
                     'quiz_id' => $quiz->id
                 ]);
             }
-            toastr()->success('Quiz created successfully');
-        } catch (\Throwable $th) {
-            toastr()->error('something error !');
+
+            return redirect()->back()->with(['success' => 'Quiz created successfully']);
+        } catch (\Exception $e) {
+            return redirect()->back()->with(['error' => $e->getMessage()]);
         }
-        return redirect()->route('quiz.index');
     }
 
     /**

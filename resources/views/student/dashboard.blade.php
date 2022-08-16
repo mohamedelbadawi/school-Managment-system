@@ -29,7 +29,7 @@
 
         @include('layouts.main-header')
 
-        @include('layouts.main-sidebar')
+        @include('layouts.sidebar.student-sidebar')
 
         <!--=================================
  Main content -->
@@ -39,6 +39,9 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <h4 class="mb-0"> Welcome back {{ auth()->user()->name }}</h4>
+                        <small> <strong> Class: </strong>{{ auth()->user()->classroom->name }}<strong> level:
+                            </strong>{{ auth()->user()->level->name }} <strong>grade: </strong>
+                            {{ auth()->user()->grade->name }} </small>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right">

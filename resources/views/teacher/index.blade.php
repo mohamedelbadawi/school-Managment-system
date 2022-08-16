@@ -196,8 +196,8 @@
 
                                 <form action="{{ route('teacher.update', $teacher->id) }}" class="form"
                                     method="post">
-                                    @csrf
                                     @method('PATCH')
+                                    @csrf
                                     <div class="d-flex">
                                         <div class="form-group mr-1">
                                             <label for="name_ar">
