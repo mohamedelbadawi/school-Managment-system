@@ -121,23 +121,12 @@
                         <div class="dropdown-header">
                             <div class="media">
                                 <div class="media-body">
-                                    @auth('student')
-                                        <h5 class="mt-0 mb-0">{{ auth('student')->user()->name }} </h5>
-                                    @endauth
 
-                                    @auth('teacher')
-                                        <h5 class="mt-0 mb-0">{{ auth('teacher')->user()->name }}</h5>
-                                    @endauth
+                                    <h5 class="mt-0 mb-0">{{ auth()->user()->name }} </h5>
 
-                                    @auth('web')
-                                        <h5 class="mt-0 mb-0">{{ auth('web')->user()->name }}</h5>
-                                    @endauth
 
-                                    @auth('parent')
-                                        <h5 class="mt-0 mb-0">{{ auth('parent')->user()->name }}</h5>
-                                    @endauth
 
-                                    <span>michael-bean@mail.com</span>
+                                    <span>{{ auth()->user()->email }}</span>
                                 </div>
                             </div>
                         </div>
@@ -145,7 +134,17 @@
 
                         <div class="dropdown-divider"></div>
 
-                        <a class="dropdown-item" href="{{route('teacher.profile')}}"><i class="text-warning ti-user"></i>Profile</a>
+                        @auth('teacher')
+                            <a class="dropdown-item" href="{{ route('teacher.profile') }}"><i
+                                    class="text-warning ti-user"></i>Profile</a>
+                        @endauth
+                        @auth('student')
+                            <a class="dropdown-item" href="{{ route('student.profile') }}"><i
+                                    class="text-warning ti-user"></i>Profile</a>
+                        @endauth
+
+
+
                         <a class="dropdown-item" href="#"><i class="text-dark ti-layers-alt"></i>Projects <span
                                 class="badge badge-info">6</span> </a>
                         <div class="dropdown-divider"></div>

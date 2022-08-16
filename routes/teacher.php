@@ -31,8 +31,8 @@ Route::group(
             Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance.index');
             Route::get('/attendance/{classRoom}', [AttendanceController::class, 'show'])->name('attendance.show');
             Route::post('/attendance/store', [AttendanceController::class, 'store'])->name('attendance.store');
-            Route::get('/profile', [TeacherController::class, 'showProfile'])->name('teacher.profile');
-            Route::post('/profile/update', [TeacherController::class, 'updateProfile'])->name('teacher.profile.update');
+            Route::get('teacher/profile', [TeacherController::class, 'showProfile'])->name('teacher.profile');
+            Route::post('teacher/profile/update', [TeacherController::class, 'updateProfile'])->name('teacher.profile.update');
             Route::get('/quiz/{quiz}/result', [QuizController::class, 'showStudentsResult'])->name('teacher.quiz.result');
             Route::get('/quiz/{quiz}/close', [QuizController::class, 'closeQuiz'])->name('teacher.quiz.close');
         });

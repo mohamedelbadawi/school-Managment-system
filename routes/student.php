@@ -21,6 +21,8 @@ Route::group(
             Route::get('student/quizzes/', [QuizController::class, 'index'])->name('student.quiz.index');
             Route::get('student/quizzes/{quiz}', [QuizController::class, 'show'])->middleware('checkAtemptStatus')->name('student.quiz.atempt');
             Route::post('student/quizzes/{quiz}/submit', [QuizController::class, 'submitQuiz'])->name('student.quiz.submit');
+            Route::get('student/profile', [StudentController::class, 'showProfile'])->name('student.profile');
+            Route::post('student/profile/update', [StudentController::class, 'updateProfile'])->name('student.profile.update');
         });
     }
 );

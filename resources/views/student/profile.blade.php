@@ -2,7 +2,6 @@
 
 
 @section('content')
-
     <!-- row -->
     <div class="card">
 
@@ -15,18 +14,18 @@
                     <div class="col-lg-4">
                         <div class="card mb-4">
                             <div class="card-body text-center">
-                                <img src="{{ URL::asset('assets/images/teacher.png') }}" alt="avatar"
+                                <img src="{{ URL::asset('assets/images/student.png') }}" alt="avatar"
                                     class="rounded-circle img-fluid" style="width: 150px;">
                                 <h5 style="font-family: Cairo" class="my-3">{{ $data->name }}</h5>
                                 <p class="text-muted mb-1">{{ $data->email }}</p>
-                                <p class="text-muted mb-4">Teacher</p>
+                                <p class="text-muted mb-4">Student</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-8">
                         <div class="card mb-4">
                             <div class="card-body">
-                                <form action="{{route('teacher.update')}}" method="post">
+                                <form action="{{ route('student.profile.update', $data->id) }}" method="post">
                                     @csrf
                                     <div class="row">
                                         <div class="col-sm-3">

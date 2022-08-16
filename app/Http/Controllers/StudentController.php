@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use App\Http\Requests\StoreStudentRequest;
+use App\Http\Requests\updateStudentProfileRequest;
 use App\Http\Requests\UpdateStudentRequest;
 use App\Models\BloodType;
 use App\Models\Gender;
@@ -36,7 +37,7 @@ class StudentController extends Controller
     public function dashboard()
     {
 
-      
+
         return view('student.dashboard');
     }
 
@@ -163,6 +164,39 @@ class StudentController extends Controller
         } catch (\Throwable $th) {
             toastr()->success('can\'t delete student right now');
             return redirect()->route('student.index');
+        }
+    }
+
+    public function showProfile()
+
+    {
+        $data = auth('student')->user();
+
+        return view('student.profile', compact('data'));
+    }
+
+
+    public function updateProfile(updateStudentProfileRequest $request)
+    {
+        try {
+            $student = auth()->user();
+            if ($request->password == null) {
+                $student->update(['name' => [
+                    'ar' => $request->name_ar,
+                    'en' => $request->name_en
+                ]]);
+            } else {
+                $student->update([
+                    'name' => [
+                        'ar' => $request->name_ar,
+                        'en' => $request->name_en,
+                    ],
+                    'password' => $request->password
+                ]);
+            }
+            return redirect()->back()->with(['success' => 'updated successfully']);
+        } catch (\Exception $e) {
+            return redirect()->back()->with(['error' => $e->getMessage()]);
         }
     }
 }
