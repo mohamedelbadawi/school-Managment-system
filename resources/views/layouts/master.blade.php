@@ -10,6 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     @include('layouts.head')
     @livewireStyles
+
+    @toastr_css
 </head>
 
 <body>
@@ -73,6 +75,10 @@
  footer -->
 
     @include('layouts.footer-scripts')
+
+    @toastr_js
+    @toastr_render
+
 
 </body>
 

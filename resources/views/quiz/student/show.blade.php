@@ -11,29 +11,30 @@
                                     <div class="card-heaer">
                                         <h3 class="text-center">{{ $quiz->title }}</h3>
                                     </div>
-                                    <form>
+                                    <form action="{{ route('student.quiz.submit', $quiz->id) }}" method="post">
+                                        @csrf
                                         @foreach ($questions as $question)
                                             <fieldset id="group-{{ $loop->iteration }}" class="card-header">
                                                 <label for=""> <strong>{{ $question->title }} </strong></label>
                                                 <div class="d-flex flex-column">
                                                     <div class="form-group">
                                                         <input type="radio" value="{{ $question->answer_1 }}"
-                                                            name="question-{{ $question->id }}">
+                                                            name="{{ $question->id }}">
                                                         <label for="">{{ $question->answer_1 }}</label>
                                                     </div>
                                                     <div class="form-group">
                                                         <input type="radio" value="{{ $question->answer_2 }}"
-                                                            name="question-{{ $question->id }}">
+                                                            name="{{ $question->id }}">
                                                         <label for="">{{ $question->answer_2 }}</label>
                                                     </div>
                                                     <div class="form-group">
                                                         <input type="radio" value="{{ $question->answer_3 }}"
-                                                            name="question-{{ $question->id }}">
+                                                            name="{{ $question->id }}">
                                                         <label for="">{{ $question->answer_3 }}</label>
                                                     </div>
                                                     <div class="form-group">
                                                         <input type="radio" value="{{ $question->answer_4 }}"
-                                                            name="question-{{ $question->id }}">
+                                                            name="{{ $question->id }}">
                                                         <label for="">{{ $question->answer_4 }}</label>
                                                     </div>
 

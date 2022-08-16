@@ -20,6 +20,7 @@ Route::group(
 
             Route::get('student/quizzes/', [QuizController::class, 'index'])->name('student.quiz.index');
             Route::get('student/quizzes/{quiz}', [QuizController::class, 'show'])->middleware('checkAtemptStatus')->name('student.quiz.atempt');
+            Route::post('student/quizzes/{quiz}/submit', [QuizController::class, 'submitQuiz'])->name('student.quiz.submit');
         });
     }
 );

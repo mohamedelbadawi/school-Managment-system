@@ -42,7 +42,7 @@ class QuizController extends Controller
      */
     public function store(storeQuizRequest $request)
     {
-        // dd($request);
+
         try {
             $quiz = Quiz::create([
                 'title' => $request->title,

@@ -43,4 +43,8 @@ class Quiz extends Model
     {
         return (!Atempt::where('student_id', auth('student')->id())->where('quiz_id', $id)->count()) ? false : true;
     }
+    public function degree($id)
+    {
+        return QuestionResult::where('student_id', auth('student')->id())->where('quiz_id', $id)->sum('points');
+    }
 }

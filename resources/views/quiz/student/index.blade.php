@@ -29,14 +29,19 @@
                                                         {{ $quiz->status }}</td>
                                                     <td>{{ $quiz->title }}</td>
                                                     <td>
-                                                        <button {{ $quiz->isAttempted($quiz->id) ? 'disabled' : '' }}
-                                                            href="{{ route('student.quiz.atempt', $quiz->id) }}"
-                                                            class="btn btn-outline-success btn-sm" role="button"
-                                                            aria-pressed="true" onclick="alertAbuse()">
-                                                            Atempt
-                                                            <i class="fas fa-person-booth"></i>
+                                                        @if (!$quiz->isAttempted($quiz->id))
+                                                            <a href="{{ route('student.quiz.atempt', $quiz->id) }}"
+                                                                class="btn btn-outline-success btn-sm" role="button">
+                                                                Atempt
+                                                                <i class="fas fa-person-booth"></i>
 
-                                                        </button>
+                                                            </a>
+                                                        @else
+                                                            <p>
+                                                                {{ $quiz->degree($quiz->id) }}
+                                                            </p>
+                                                        @endif
+
                                                     </td>
                                                 </tr>
                                             @endforeach

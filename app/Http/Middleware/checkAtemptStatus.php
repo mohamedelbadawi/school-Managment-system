@@ -17,6 +17,7 @@ class checkAtemptStatus
      */
     public function handle(Request $request, Closure $next)
     {
+        
         if (!Atempt::where('student_id', auth('student')->id())->where('quiz_id', $request->route()->parameter('quiz')->id)->count()) {
             return $next($request);
         } else {
