@@ -30,6 +30,7 @@ class TeacherController extends Controller
 
     public function storeTeacher(storeTeacherRequest $request)
     {
+        
         try {
             Teacher::create([
                 'name' => [

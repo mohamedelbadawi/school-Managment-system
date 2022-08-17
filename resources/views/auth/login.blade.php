@@ -43,35 +43,27 @@ login-->
             <div class="container">
                 <div class="row justify-content-center no-gutters vertical-align">
                     <div class="col-lg-4 col-md-6 login-fancy-bg bg"
-                        style="background-image: url('{{ asset('assets/images/login-inner-bg.jpg') }}');">
+                        style="background-image: url('{{ asset('assets/images/student.png') }}');">
                         <div class="login-fancy">
-                            <h2 class="text-white mb-20">Hello world!</h2>
-                            <p class="mb-20 text-white">Create tailor-cut websites with the exclusive multi-purpose
-                                responsive template along with powerful features.</p>
-                            <ul class="list-unstyled  pos-bot pb-30">
-                                <li class="list-inline-item"><a class="text-white" href="#"> Terms of Use</a>
-                                </li>
-                                <li class="list-inline-item"><a class="text-white" href="#"> Privacy Policy</a>
-                                </li>
-                            </ul>
+                          
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 bg-white">
                         <div class="login-fancy pb-40 clearfix">
                             @if ($type == 'student')
-                                <h3 style="font-family: 'Cairo', sans-serif" class="mb-30">تسجيل دخول طالب</h3>
+                                <h3 style="font-family: 'Cairo', sans-serif" class="mb-30"> student login </h3>
                             @elseif($type == 'parent')
-                                <h3 style="font-family: 'Cairo', sans-serif" class="mb-30">تسجيل دخول ولي امر</h3>
+                                <h3 style="font-family: 'Cairo', sans-serif" class="mb-30"> parent login </h3>
                             @elseif($type == 'teacher')
-                                <h3 style="font-family: 'Cairo', sans-serif" class="mb-30">تسجيل دخول معلم</h3>
+                                <h3 style="font-family: 'Cairo', sans-serif" class="mb-30"> teacher login </h3>
                             @else
-                                <h3 style="font-family: 'Cairo', sans-serif" class="mb-30">تسجيل دخول ادمن</h3>
+                                <h3 style="font-family: 'Cairo', sans-serif" class="mb-30">admin login </h3>
                             @endif
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
 
                                 <div class="section-field mb-20">
-                                    <label class="mb-10" for="name">البريدالالكتروني*</label>
+                                    <label class="mb-10" for="name">Email*</label>
                                     <input id="email" type="email"
                                         class="form-control @error('email') is-invalid @enderror" name="email"
                                         value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -85,7 +77,7 @@ login-->
                                 </div>
 
                                 <div class="section-field mb-20">
-                                    <label class="mb-10" for="Password">كلمة المرور * </label>
+                                    <label class="mb-10" for="Password"> password * </label>
                                     <input id="password" type="password"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
                                         required autocomplete="current-password">
@@ -100,8 +92,7 @@ login-->
                                 <div class="section-field">
                                     <div class="remember-checkbox mb-30">
                                         <input type="checkbox" class="form-control" name="two" id="two" />
-                                        <label for="two"> تذكرني</label>
-                                        <a href="#" class="float-right">هل نسيت كلمةالمرور ؟</a>
+                                        <label for="two"> Remember me</label>
                                     </div>
                                 </div>
                                 <button class="button"><span>دخول</span><i class="fa fa-check"></i></button>
