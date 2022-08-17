@@ -18,6 +18,8 @@ Route::group(
             Route::get('/parent/dashboard', [StudentParentController::class, 'index'])->name('parent.dashboard');
             Route::get('/parent/{student}/result', [ResultController::class, 'showStudentQuizzesResult'])->name('parent.student.result');
             Route::get('/parent/attendance', [AttendanceController::class, 'index'])->name('parent.attendance');
+            Route::get('/parent/profile', [StudentParentController::class, 'showProfile'])->name('parent.profile');
+            Route::post('/parent/profile/update', [StudentParentController::class, 'updateProfile'])->name('parent.profile.update');
         });
     }
 );

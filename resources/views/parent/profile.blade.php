@@ -18,35 +18,65 @@
                                     class="rounded-circle img-fluid" style="width: 150px;">
                                 <h5 style="font-family: Cairo" class="my-3">{{ $data->name }}</h5>
                                 <p class="text-muted mb-1">{{ $data->email }}</p>
-                                <p class="text-muted mb-4">Student</p>
+                                <p class="text-muted mb-4">parent</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-8">
                         <div class="card mb-4">
                             <div class="card-body">
-                                <form action="{{ route('student.profile.update',$data->id) }}" method="post">
+                                <form action="{{ route('parent.profile.update', $data->id) }}" method="post">
                                     @csrf
                                     <div class="row">
                                         <div class="col-sm-3">
-                                            <p class="mb-0"> Arabic name</p>
+                                            <p class="mb-0"> father Arabic name</p>
                                         </div>
                                         <div class="col-sm-9">
                                             <p class="text-muted mb-0">
-                                                <input type="text" name="name_ar"
-                                                    value="{{ $data->getTranslation('name', 'ar') }}" class="form-control">
+                                                <input type="text" name="name_fa_ar"
+                                                    value="{{ $data->getTranslation('father_name', 'ar') }}"
+                                                    class="form-control">
                                             </p>
                                         </div>
                                     </div>
+
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-3">
-                                            <p class="mb-0"> English name</p>
+                                            <p class="mb-0"> father English name</p>
                                         </div>
                                         <div class="col-sm-9">
                                             <p class="text-muted mb-0">
-                                                <input type="text" name="name_en"
-                                                    value="{{ $data->getTranslation('name', 'en') }}" class="form-control">
+                                                <input type="text" name="name_fa_en"
+                                                    value="{{ $data->getTranslation('father_name', 'en') }}"
+                                                    class="form-control">
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <p class="mb-0">Mom Arabic name</p>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <p class="text-muted mb-0">
+                                                <input type="text" name="name_mom_ar"
+                                                    value="{{ $data->getTranslation('mom_name', 'ar') }}"
+                                                    class="form-control">
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <p class="mb-0">Mom English name</p>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <p class="text-muted mb-0">
+                                                <input type="text" name="name_mom_en"
+                                                    value="{{ $data->getTranslation('mom_name', 'en') }}"
+                                                    class="form-control">
                                             </p>
                                         </div>
                                     </div>

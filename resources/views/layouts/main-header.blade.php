@@ -126,6 +126,10 @@
                             <a class="dropdown-item" href="{{ route('student.profile') }}"><i
                                     class="text-warning ti-user"></i>Profile</a>
                         @endauth
+                        @auth('parent')
+                            <a class="dropdown-item" href="{{ route('parent.profile') }}"><i
+                                    class="text-warning ti-user"></i>Profile</a>
+                        @endauth
 
 
                         <div class="dropdown-divider"></div>
