@@ -11,6 +11,7 @@ use App\Models\StudentParent;
 use Faker\Core\Blood;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class StudentSeeder extends Seeder
 {
@@ -21,15 +22,14 @@ class StudentSeeder extends Seeder
      */
     public function run()
     {
+
+        DB::table('students')->delete();
         $faker = Factory::create();
         $grades = Grade::all();
-        // $parents = StudentParent::all()->toArray();
-        // $nationalities = Nationalitie::all()->toArray();
-        // $bloods = BloodType::all()->toArray();
         foreach ($grades as $grade) {
             foreach ($grade->levels as $level) {
                 foreach ($level->classrooms as $classroom) {
-                    for ($i = 0; $i < 10; $i++) {
+                    for ($i = 0; $i < 1; $i++) {
                         Student::create([
                             'name' => $faker->name,
                             'email' => $faker->unique()->safeEmail,

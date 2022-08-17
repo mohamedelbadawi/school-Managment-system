@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use PhpParser\Node\Expr\FuncCall;
 
 class Quiz extends Model
 {
@@ -47,4 +48,6 @@ class Quiz extends Model
     {
         return QuestionResult::where('student_id', auth('student')->id())->where('quiz_id', $id)->sum('points');
     }
+
+   
 }

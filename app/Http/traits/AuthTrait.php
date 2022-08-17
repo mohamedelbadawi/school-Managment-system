@@ -12,9 +12,11 @@ trait AuthTrait
 
         if ($type == 'student') {
             $guradName = 'student';
-        } else if ($type == 'parent') {
+        }
+         else if ($type == 'parent') {
             $guradName = 'parent';
-        } else if ($type == 'teacher') {
+        }
+         else if ($type == 'teacher') {
             $guradName = 'teacher';
         } else {
             $guradName = 'web';

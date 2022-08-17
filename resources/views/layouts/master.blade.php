@@ -40,6 +40,9 @@
         @if (auth('student')->check())
             @include('layouts.sidebar.student-sidebar')
         @endif
+        @if (auth('parent')->check())
+            @include('layouts.sidebar.parent-sidebar')
+        @endif
 
         <!--=================================
  Main content -->

@@ -23,6 +23,14 @@ class Teacher extends Authenticatable
     {
         return $this->belongsToMany(ClassRoom::class);
     }
+
+    
+    public function classroomsDate()
+    {
+        return $this->belongsToMany(ClassRoom::class)->with(['students']);
+    }
+
+
     public function specialization()
     {
         return $this->belongsTo(Specialization::class);

@@ -74,7 +74,7 @@ class AddParentData extends Component
             $parent = StudentParent::create(
                 [
                     'email' => $this->email,
-                    'password' => $this->password,
+                    'password' => bcrypt($this->password),
                     'father_name' => [
                         'en' => $this->father_name_en,
                         'ar' => $this->father_name_ar

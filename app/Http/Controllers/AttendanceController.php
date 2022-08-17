@@ -19,6 +19,7 @@ class AttendanceController extends Controller
     public function show(ClassRoom $classRoom)
     {
 
+     
         return view('attendance.classroom', compact('classRoom'));
     }
     public function store(Request $request)

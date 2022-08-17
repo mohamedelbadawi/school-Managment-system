@@ -77,4 +77,11 @@ class Student extends Authenticatable
     {
         return $this->result->where('quiz_id', $quiz_id)->sum('points');
     }
+
+    public function quizzesResults()
+    {
+        return $this->hasMany(Result::class);
+    }
+    
+
 }

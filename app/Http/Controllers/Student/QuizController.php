@@ -7,7 +7,9 @@ use App\Models\Atempt;
 use App\Models\Question;
 use App\Models\QuestionResult;
 use App\Models\Quiz;
+use App\Models\Result;
 use Illuminate\Http\Request;
+
 
 class QuizController extends Controller
 {
@@ -30,9 +32,11 @@ class QuizController extends Controller
     {
 
         try {
+            $points = 0;
             foreach ($request->except('_token') as $k => $v) {
                 $question = Question::findOrFail($k);
                 if ($question->right_answer == $v) {
+                    $points += $question->point;
                     QuestionResult::updateorCreate([
                         'student_id' => auth('student')->id(),
                         'quiz_id' => $quiz->id,
@@ -40,6 +44,10 @@ class QuizController extends Controller
                     ]);
                 }
             }
+            Result::updateOrCreate([
+                'quiz_id' => $quiz->id, 'student_id' => auth('student')->id(), 'result' => $points
+
+            ]);
             toastr()->success('quiz submited successfully');
             return redirect()->route('student.quiz.index');
         } catch (\Exception $e) {

@@ -39,7 +39,7 @@
                     <a class="nav-link top-nav" data-toggle="dropdown" href="#" role="button"
                         aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-language"></i>
-                       
+
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-big dropdown">
                         <div class="dropdown-header ">
@@ -54,20 +54,21 @@
                     </div>
                 </li>
 
+                @auth('student')
 
-                <li class="nav-item dropdown ">
-                    <a class="nav-link top-nav" data-toggle="dropdown" href="#" role="button"
-                        aria-haspopup="true" aria-expanded="false">
-                        <i class="ti-bell"></i>
-                        <span class="badge badge-pill badge-danger">{{auth('student')->user()->unreadNotifications->count()}}</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-big dropdown-notifications">
-                        <div class="dropdown-header notifications">
-                            <strong>Notifications</strong>
-                            
-                        </div>
-                        <div class="dropdown-divider"></div>
-                        @auth('student')
+                    <li class="nav-item dropdown ">
+                        <a class="nav-link top-nav" data-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="false">
+                            <i class="ti-bell"></i>
+                            <span
+                                class="badge badge-pill badge-danger">{{ auth('student')->user()->unreadNotifications->count() }}</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-big dropdown-notifications">
+                            <div class="dropdown-header notifications">
+                                <strong>Notifications</strong>
+
+                            </div>
+                            <div class="dropdown-divider"></div>
 
                             @foreach (auth('student')->user()->unreadNotifications as $notification)
                                 <div class="p-2">
@@ -80,26 +81,35 @@
                                     </a>
                                 </div>
                             @endforeach
-                        @endauth
 
-                    </div>
-                </li>
+                        </div>
+                    </li>
+                @endauth
 
                 <li class="nav-item dropdown mr-30">
                     <a class="nav-link nav-pill user-avatar" data-toggle="dropdown" href="#" role="button"
                         aria-haspopup="true" aria-expanded="false">
-                        <img src="{{ URL::asset('assets/images/student.png') }}" alt="avatar">
+                        @auth('student')
+                            <img src="{{ URL::asset('assets/images/student.png') }}" alt="avatar">
+                        @endauth
+                        @auth('teacher')
+                            <img src="{{ URL::asset('assets/images/teacher.png') }}" alt="avatar">
+                        @endauth
+                        @auth('parent')
+                            <img src="{{ URL::asset('assets/images/parent.png') }}" alt="avatar">
+                        @endauth
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <div class="dropdown-header">
                             <div class="media">
                                 <div class="media-body">
-
-                                    <h5 class="mt-0 mb-0">{{ auth()->user()->name }} </h5>
-
-
-
-                                    <span>{{ auth()->user()->email }}</span>
+                                    @auth('parent')
+                                        <h5 class="mt-0 mb-0">{{ auth('parent')->user()->father_name }} </h5>
+                                        <span>{{ auth('parent')->user()->email }}</span>
+                                    @else
+                                        <h5 class="mt-0 mb-0">{{ auth()->user()->name }} </h5>
+                                        <span>{{ auth()->user()->email }}</span>
+                                    @endauth
                                 </div>
                             </div>
                         </div>

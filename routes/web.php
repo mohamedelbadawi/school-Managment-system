@@ -95,7 +95,6 @@ Route::group(
             // attendance
         });
         Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-        // Auth::routes(['register']);
         // auth
         Route::get('login/{type}', [LoginController::class, 'loginForm'])->middleware('guest')->name('login.show');
         Route::post('login/', [LoginController::class, 'login'])->middleware('guest')->name('login');
