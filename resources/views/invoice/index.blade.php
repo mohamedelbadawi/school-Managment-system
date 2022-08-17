@@ -23,7 +23,7 @@
                                                 <th>expances name</th>
                                                 <th>amount</th>
                                                 <th>description</th>
-                                                {{-- <th>actions</th> --}}
+                                              
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -35,17 +35,7 @@
                                                     <td>{{ number_format($invoice->amount, 2) }}</td>
 
                                                     <td>{{ $invoice->description ? $invoice->description : '-' }}</td>
-                                                    <td>
-                                                        {{-- <button data-toggle="modal"
-                                                            data-target="#editModal-{{ $invoice->id }}"
-                                                            class="btn btn-info btn-sm" role="button"
-                                                            aria-pressed="true"><i class="fa fa-edit"></i></button>
 
-
-                                                        <button type="button" class="btn btn-danger btn-sm"
-                                                            data-toggle="modal" data-target="#"><i
-                                                                class="fa fa-trash"></i></button> --}}
-                                                    </td>
                                                 </tr>
                                             @endforeach
                                     </table>

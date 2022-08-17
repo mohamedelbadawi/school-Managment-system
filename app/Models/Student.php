@@ -28,6 +28,15 @@ class Student extends Authenticatable
     {
         return $this->belongsTo(Nationalitie::class, 'nationalitie_id');
     }
+
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class);
+    }
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
     public function blood()
     {
         return $this->belongsTo(BloodType::class);
@@ -82,6 +91,4 @@ class Student extends Authenticatable
     {
         return $this->hasMany(Result::class);
     }
-    
-
 }
