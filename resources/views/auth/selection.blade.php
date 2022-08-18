@@ -17,7 +17,8 @@
         href="https://fonts.googleapis.com/css?family=Poppins:200,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900">
 
     <!-- css -->
-    <link href="{{ asset('assets/css/rtl.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/css/rtl.css') }}" >
+    <link rel="stylesheet" href="{{ asset('assets/css/ltr.css') }}" >
 
 
 
