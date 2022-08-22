@@ -5,6 +5,8 @@ Tools:
 - Laravel
 - livewire
 - bootstrap
+## Live version
+http://school-managment--system.herokuapp.com/
 Multi language School managment system with four dashboards
 
 - Admin
@@ -47,7 +49,7 @@ Dashboard contain sons and their data such as attendance invoices and their resu
 
 Clone the repository
 
-    git clone https://github.com/mohamedelbadawi/Grocery-ecommerce.git
+    git clone https://github.com/mohamedelbadawi/school-Managment-system.git
 
 Switch to the repo folder
 
