@@ -1,64 +1,105 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# School managment system
 
-## About Laravel
+Tools: 
+- Laravel
+- livewire
+- bootstrap
+Multi language School managment system with four dashboards
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Admin
+- Teacher
+- Student
+- Parents
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Admin Dashboard 
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Admin can Add 
+ - Grades
+ - Levels
+ - classrooms
+ - teachers
+ - students
+ - School expenses
+ - invoices
+ -  Parents
+ Also pay installments.
+ 
+![This is an image](https://github.com/mohamedelbadawi/school-Managment-system/blob/main/admin.png?raw=true)
 
-## Learning Laravel
+## Teacher Dashboard
+Teacher can create zoom meeting for a specific classroom once teacher created the meeting the students in the classroom will get a notification with all details of the meeting.
+Also teacher can create a quiz with multiple choice and take attendance for the class that belongs to him
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+![This is an image](https://github.com/mohamedelbadawi/school-Managment-system/blob/main/teacher.png?raw=true)
+## Student Dashboard 
+student will see the meetings,quizzes that belongs to his classroom.
+Also Dashboard will show the student the days he didn't attend.
+![This is an image](https://github.com/mohamedelbadawi/school-Managment-system/blob/main/student.png?raw=true)
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## Parent Dashboard
+![This is an image](https://github.com/mohamedelbadawi/school-Managment-system/blob/main/parent.png?raw=true)
 
-### Premium Partners
+Dashboard contain sons and their data such as attendance invoices and their results of the quizzes
+###
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+Clone the repository
 
-## Contributing
+    git clone https://github.com/mohamedelbadawi/Grocery-ecommerce.git
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Switch to the repo folder
 
-## Code of Conduct
+    cd Grocery-ecommerce
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Install all the dependencies using composer
 
-## Security Vulnerabilities
+    composer install
+    composer update
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Copy the example env file and make the required configuration changes in the .env file
 
-## License
+    cp .env.example .env
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Generate a new application key
+
+    php artisan key:generate
+
+
+Run the database migrations (**Set the database connection in .env before migrating**)
+
+    php artisan migrate
+
+Start the local development server
+
+    php artisan serve
+
+You can now access the server at http://localhost:8000
+
+
+**Make sure you set the correct database connection information before running the migrations** [Environment variables](#environment-variables)
+
+    php artisan migrate
+    php artisan serve
+
+## Database seeding
+
+Run the database seeder and you're done
+
+    php artisan db:seed
+
+***Note*** : It's recommended to have a clean database before seeding. You can refresh your migrations at any point to clean the database by running the following command
+
+    php artisan migrate:refresh
+    
+
+
+
+
+
+## to launch the server
+```bash
+php artisan serve
+```
+The  project is now up and running! Access it at http://localhost:8000.
