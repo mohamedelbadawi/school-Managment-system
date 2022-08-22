@@ -6,7 +6,8 @@ Tools:
 - livewire
 - bootstrap
 ## Live version
-http://school-managment--system.herokuapp.com/
+http://school-managment--system.herokuapp.com
+
 Multi language School managment system with four dashboards
 
 - Admin
