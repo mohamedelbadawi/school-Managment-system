@@ -8,6 +8,10 @@
     <meta name="description" content="Webmin - Bootstrap 4 & Angular 5 Admin Dashboard Template" />
     <meta name="author" content="potenzaglobalsolutions.com" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<<<<<<< HEAD
+=======
+
+>>>>>>> 463a379 (dashboard images)
     <title> login</title>
 
     <title>login</title>

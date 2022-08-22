@@ -27,13 +27,8 @@
         <!--=================================
  preloader -->
 
-        @include('layouts.main-header')
-        @if (auth('web')->check())
-            @include('layouts.sidebar.admin-sidebar')
-        @endif
-        @if (auth('teacher')->check())
-            @include('layouts.sidebar.teacher-sidebar')
-        @endif
+
+        @include('layouts.sidebar.teacher-sidebar')
 
         <!--=================================
  Main content -->
